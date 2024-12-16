@@ -2,6 +2,7 @@ package com.example.demo;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -10,13 +11,27 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.Base64;
 
 @Component
 public class JwtTokenUtil {
 
-    // Генерация безопасного ключа, гарантированно длиной >= 512 бит
-    private final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS512);
-    private final long EXPIRATION_TIME = 86400000;
+    // Загружаем секретную фразу из настроек (application.properties или application.yml)
+    @Value("${jwt.secret}")
+    private String secretKeyString;  // секретная строка, которая задается в конфигурации
+
+    private SecretKey secretKey; // ключ для подписи JWT
+    private final long EXPIRATION_TIME = 86400000; // Время жизни токена (24 часа)
+
+    // Инициализация секретного ключа
+    public JwtTokenUtil() {
+    }
+
+    @PostConstruct
+    public void init() {
+        byte[] keyBytes = Base64.getDecoder().decode(secretKeyString);  // Декодируем строку из Base64
+        secretKey = Keys.hmacShaKeyFor(keyBytes);  // Генерируем ключ из строки
+    }
 
     // Генерация токена с UUID userId
     public String generateToken(UUID userId, String username) {
@@ -28,14 +43,13 @@ public class JwtTokenUtil {
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(SECRET_KEY)  // Используйте секретный ключ при генерации
+                .signWith(secretKey)  // Используем постоянный секретный ключ
                 .compact();
     }
 
     // Получение userId из токена
     public UUID extractUserId(String token) {
         Claims claims = getClaimsFromToken(token);
-        System.out.println("2: " + claims);
         String userIdStr = claims.get("userId", String.class);  // Извлекаем userId как строку
         return UUID.fromString(userIdStr);  // Преобразуем строку в UUID
     }
@@ -62,7 +76,7 @@ public class JwtTokenUtil {
     private Claims getClaimsFromToken(String token) {
         try {
             return Jwts.parserBuilder()
-                    .setSigningKey(SECRET_KEY)
+                    .setSigningKey(secretKey)
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
@@ -74,6 +88,5 @@ public class JwtTokenUtil {
             throw new RuntimeException("JWT token is invalid", e);  // Обработка других ошибок токена
         }
     }
-
 
 }
