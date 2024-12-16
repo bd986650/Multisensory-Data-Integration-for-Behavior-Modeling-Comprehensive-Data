@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,26 @@ public class UserRepository {
         }
 
     }
+
+    public String findDataByUserIdAndExactMinute(UUID userId, LocalDateTime startOfMinute) {
+        // Преобразуем LocalDateTime в Unix timestamp (секунды)
+        long timestampInSeconds = startOfMinute.toEpochSecond(ZoneOffset.UTC);
+
+        // Запрос в ClickHouse для поиска записи по user_id и времени, округленному до начала минуты
+        String sql = "SELECT json_data FROM test_db.data_records " +
+                "WHERE user_id = ? " +
+                "AND toStartOfMinute(timestamp) = toStartOfMinute(toDateTime(?))";
+
+        try {
+            // Выполнение запроса с параметризацией
+            return jdbcTemplate.queryForObject(sql, String.class, userId, timestampInSeconds);
+        } catch (EmptyResultDataAccessException e) {
+            // Если данных нет, возвращаем пустую строку
+            return "";
+        }
+    }
+
+
 
     // Метод для получения user_id и пароля по имени пользователя
     public UserData findUserDataByUsername(String username) {
