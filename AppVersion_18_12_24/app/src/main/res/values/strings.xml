@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Your App Name</string>
+    <string name="map_view_description">Interactive map view</string> <!-- Добавьте это -->
+</resources>

@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/text_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Шаги: 0"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/text_step_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="История шагов: "
+        android:textSize="16sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/text_heart_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сердцебиение: 0"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/text_heart_rate_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="История сердцебиения: Нет данных"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/text_calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сожженные калории: 0"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        />
+
+    <TextView
+        android:id="@+id/text_calorie_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="История калорий: "
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+
+        />
+
+    <TextView
+        android:id="@+id/text_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пройденное расстояние: 0 м"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/text_distance_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="История дистанции: "
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        />
+
+
+    <TextView
+        android:id="@+id/text_active_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Активные минуты: 0"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/text_sleep_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Продолжительность сна: 0 часов"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
