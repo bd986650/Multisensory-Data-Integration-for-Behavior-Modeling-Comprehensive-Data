@@ -10,67 +10,67 @@
 10
 11    <!-- Указание функциональных возможностей устройства -->
 12    <uses-feature
-12-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:7:5-9:36
+12-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:7:5-9:36
 13        android:name="android.hardware.telephony"
-13-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:8:9-50
+13-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:8:9-50
 14        android:required="false" />
-14-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:9:9-33
+14-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:9:9-33
 15
 16    <!-- Разрешения -->
 17    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
-17-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:12:5-94
-17-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:12:22-91
+17-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:12:5-94
+17-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:12:22-91
 18    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
-18-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:13:5-79
-18-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:13:22-76
+18-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:13:5-79
+18-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:13:22-76
 19    <uses-permission android:name="android.permission.BODY_SENSORS" />
-19-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:14:5-70
-19-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:14:22-68
+19-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:14:5-70
+19-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:14:22-68
 20    <uses-permission android:name="android.permission.READ_SMS" />
-20-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:15:5-66
-20-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:15:22-64
+20-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:15:5-66
+20-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:15:22-64
 21    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-21-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:16:5-69
-21-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:16:22-67
+21-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:16:5-69
+21-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:16:22-67
 22    <uses-permission android:name="android.permission.INTERNET" />
-22-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:17:5-66
-22-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:17:22-64
+22-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:17:5-66
+22-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:17:22-64
 23    <uses-permission
-23-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:18:5-20:40
+23-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:18:5-20:40
 24        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-24-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:18:22-78
+24-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:18:22-78
 25        android:maxSdkVersion="32" />
-25-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:19:9-35
+25-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:19:9-35
 26    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-26-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:21:5-78
-26-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:21:22-76
+26-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:21:5-78
+26-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:21:22-76
 27    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-27-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:22:5-80
-27-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:22:22-78
+27-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:22:5-80
+27-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:22:22-78
 28    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
-28-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:23:5-24:47
-28-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:23:22-90
+28-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:23:5-24:47
+28-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:23:22-90
 29    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-29-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:25:5-79
-29-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:25:22-76
+29-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:25:5-79
+29-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:25:22-76
 30    <uses-permission android:name="android.permission.READ_CALL_LOG" />
-30-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:26:5-71
-30-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:26:22-69
+30-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:26:5-71
+30-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:26:22-69
 31    <uses-permission android:name="android.permission.READ_CONTACTS" />
-31-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:27:5-71
-31-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:27:22-69
+31-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:27:5-71
+31-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:27:22-69
 32    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
-32-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:28:5-29:47
-32-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:28:22-75
+32-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:28:5-29:47
+32-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:28:22-75
 33    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-33-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:30:5-74
-33-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:30:22-72
+33-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:30:5-74
+33-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:30:22-72
 34    <uses-permission
-34-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:18:5-20:40
+34-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:18:5-20:40
 35        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-35-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:18:22-78
+35-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:18:22-78
 36        android:maxSdkVersion="32" />
-36-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:19:9-35
+36-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:19:9-35
 37
 38    <permission
 38-->[androidx.core:core:1.12.0] C:\Users\kolya\.gradle\caches\transforms-4\3ca2ff15d46e3f18979380ca9cf70f0c\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
@@ -112,99 +112,99 @@
 57-->[org.osmdroid:osmdroid-android:6.1.20] C:\Users\kolya\.gradle\caches\transforms-4\62c8326b1237f0f74727b7730783fab1\transformed\osmdroid-android-6.1.20\AndroidManifest.xml:25:9-33
 58
 59    <application
-59-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:34:5-82:19
+59-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:34:5-82:19
 60        android:allowBackup="true"
-60-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:35:9-35
+60-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:35:9-35
 61        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 61-->[androidx.core:core:1.12.0] C:\Users\kolya\.gradle\caches\transforms-4\3ca2ff15d46e3f18979380ca9cf70f0c\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 62        android:dataExtractionRules="@xml/data_extraction_rules"
-62-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:36:9-65
+62-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:36:9-65
 63        android:debuggable="true"
 64        android:extractNativeLibs="false"
 65        android:fullBackupContent="@xml/backup_rules"
-65-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:37:9-54
+65-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:37:9-54
 66        android:icon="@mipmap/ic_launcher"
-66-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:39:9-43
+66-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:39:9-43
 67        android:label="@string/app_name"
-67-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:38:9-41
+67-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:38:9-41
 68        android:networkSecurityConfig="@xml/network_security_config"
-68-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:43:9-69
+68-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:43:9-69
 69        android:roundIcon="@mipmap/ic_launcher_round"
-69-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:40:9-54
+69-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:40:9-54
 70        android:supportsRtl="true"
-70-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:41:9-35
+70-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:41:9-35
 71        android:testOnly="true"
 72        android:theme="@style/Theme.App" >
-72-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:42:9-41
+72-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:42:9-41
 73
 74        <!-- MainActivity -->
 75        <activity
-75-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:47:9-54:20
+75-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:47:9-54:20
 76            android:name="com.example.app.MainActivity"
-76-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:48:13-41
+76-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:48:13-41
 77            android:exported="true" >
-77-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:49:13-36
+77-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:49:13-36
 78            <intent-filter>
-78-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:50:13-53:29
+78-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:50:13-53:29
 79                <action android:name="android.intent.action.MAIN" />
-79-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:51:17-69
-79-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:51:25-66
+79-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:51:17-69
+79-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:51:25-66
 80
 81                <category android:name="android.intent.category.LAUNCHER" />
-81-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:52:17-77
-81-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:52:27-74
+81-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:52:17-77
+81-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:52:27-74
 82            </intent-filter>
 83        </activity>
 84
 85        <!-- Активности -->
 86        <activity android:name="com.example.app.HealthActivity" />
-86-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:57:9-52
-86-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:57:19-49
+86-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:57:9-52
+86-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:57:19-49
 87        <activity android:name="com.example.app.MessagesActivity" />
-87-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:58:9-54
-87-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:58:19-51
+87-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:58:9-54
+87-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:58:19-51
 88        <activity android:name="com.example.app.NotificationsActivity" />
-88-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:59:9-59
-88-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:59:19-56
+88-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:59:9-59
+88-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:59:19-56
 89        <activity android:name="com.example.app.MapActivity" />
-89-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:60:9-49
-89-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:60:19-46
+89-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:60:9-49
+89-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:60:19-46
 90        <activity android:name="com.example.app.AuthActivity" />
-90-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:61:9-50
-90-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:61:19-47
+90-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:61:9-50
+90-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:61:19-47
 91        <activity
-91-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:62:9-64:39
+91-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:62:9-64:39
 92            android:name="com.example.app.CallLogActivity"
-92-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:63:13-44
+92-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:63:13-44
 93            android:exported="true" />
-93-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:64:13-36
+93-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:64:13-36
 94        <activity
-94-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:65:9-67:39
+94-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:65:9-67:39
 95            android:name="com.example.app.ContactsActivity"
-95-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:66:13-45
+95-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:66:13-45
 96            android:exported="true" />
-96-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:67:13-36
+96-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:67:13-36
 97        <activity
-97-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:68:9-70:39
+97-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:68:9-70:39
 98            android:name="com.example.app.AppUsageActivity"
-98-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:69:13-45
+98-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:69:13-45
 99            android:exported="true" />
-99-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:70:13-36
+99-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:70:13-36
 100
 101        <!-- MyNotificationListener -->
 102        <service
-102-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:73:9-80:19
+102-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:73:9-80:19
 103            android:name="com.example.app.MyNotificationListener"
-103-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:74:13-51
+103-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:74:13-51
 104            android:exported="true"
-104-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:76:13-36
+104-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:76:13-36
 105            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
-105-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:75:13-87
+105-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:75:13-87
 106            <intent-filter>
-106-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:77:13-79:29
+106-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:77:13-79:29
 107                <action android:name="android.service.notification.NotificationListenerService" />
-107-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:78:17-99
-107-->C:\Users\kolya\AndroidStudioProjects\AppVersion_12_12_24\app\src\main\AndroidManifest.xml:78:25-96
+107-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:78:17-99
+107-->C:\Users\kolya\AndroidStudioProjects\AppVersion_18_12_24\app\src\main\AndroidManifest.xml:78:25-96
 108            </intent-filter>
 109        </service>
 110
