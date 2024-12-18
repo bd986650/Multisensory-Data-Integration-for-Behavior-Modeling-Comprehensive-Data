@@ -1,0 +1,22 @@
+.button {
+  display: flex;
+  align-items: center;
+
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgba(151, 66, 255, 0.8);
+}
+
+.image {
+  width: 28px;
+  margin: 3px 5px;
+}
+
+.text {
+  font-size: 16px;
+}

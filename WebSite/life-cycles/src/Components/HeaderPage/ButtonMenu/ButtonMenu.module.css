@@ -1,0 +1,19 @@
+.button {
+  background-color: transparent;
+  border: 3px solid rgba(64, 0, 142, 0.477);
+  border-radius: 10px;
+
+  height: 35px;
+  margin-left: 30px;
+
+  cursor: pointer;
+}
+
+.text {
+  font-size: 18px;
+  margin: 0px 4px;
+}
+
+.button:hover {
+  background-color: rgba(98, 35, 175, 0.477);
+}
