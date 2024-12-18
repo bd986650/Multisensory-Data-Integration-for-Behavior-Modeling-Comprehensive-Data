@@ -1,0 +1,62 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  /* align-items: center; */
+  margin-top: 350px;
+  justify-content: center;
+}
+
+.form {
+  width: 450px;
+  height: 300px;
+}
+
+.headerContainer {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 35px;
+  border-radius: 50%;
+  margin: 0 5px;
+
+  display: flex;
+}
+
+.buttonContainer {
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid rgb(160, 160, 160);
+  display: flex;
+}
+
+.textButton {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.button {
+  border: none;
+  margin-right: 15px;
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.buttonHover {
+  border-bottom: 2px solid rgb(80, 0, 180);
+}
+
+.textButtonHover {
+  color: rgb(60, 0, 120);
+}
+
+.lettersLogoImage {
+  margin-top: 10px;
+  height: 25px;
+}

@@ -1,0 +1,20 @@
+.profile {
+  position: relative;
+
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+
+  background-color: rgba(114, 29, 217, 0.477);
+
+  cursor: pointer;
+}
+
+.accountImage {
+  height: 45px;
+  width: 45px;
+}
+
+.profile:hover {
+  background-color: rgba(115, 0, 255, 0.55);
+}
