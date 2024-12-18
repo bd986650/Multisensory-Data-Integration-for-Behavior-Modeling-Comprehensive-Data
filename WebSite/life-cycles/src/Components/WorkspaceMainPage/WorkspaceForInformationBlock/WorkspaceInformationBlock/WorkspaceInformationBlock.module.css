@@ -1,0 +1,10 @@
+.container {
+  width: 400px;
+  height: 800px;
+
+  display: flex;
+  border-radius: 30px;
+  margin: 10px;
+
+  background-color: rgba(192, 158, 224, 0.773);
+}
