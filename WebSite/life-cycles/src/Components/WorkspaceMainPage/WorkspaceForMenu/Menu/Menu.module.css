@@ -1,0 +1,13 @@
+.container {
+  flex-grow: 1;
+  margin: 10px;
+  border-radius: 30px;
+
+  background-color: rgba(192, 158, 224, 0.773);
+}
+
+.menu {
+  height: 100%;
+  width: 100%;
+  margin: 25px 0px;
+}
