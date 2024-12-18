@@ -1,0 +1,15 @@
+.containerLogo {
+  height: 55px;
+  width: 203px;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.logoImage {
+  height: 50px;
+}
+
+.lettersLogoImage {
+  height: 35px;
+}
