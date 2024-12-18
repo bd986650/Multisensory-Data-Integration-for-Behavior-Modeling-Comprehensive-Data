@@ -1,0 +1,22 @@
+.header {
+  height: 55px;
+  width: 100%;
+  background-color: rgba(114, 29, 217, 0.477);
+
+  display: flex;
+  align-items: center;
+}
+
+.leftPartHeader {
+  display: flex;
+  align-items: center;
+  width: 90%;
+}
+
+.rightPartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 10%;
+}
