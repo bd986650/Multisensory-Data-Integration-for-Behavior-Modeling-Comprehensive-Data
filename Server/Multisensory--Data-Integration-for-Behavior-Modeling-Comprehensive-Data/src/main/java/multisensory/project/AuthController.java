@@ -1,7 +1,6 @@
-package com.example.demo;
+package multisensory.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,7 +22,7 @@ public class AuthController {
     private JdbcTemplate jdbcTemplate;
 
     // Создаем объект для хэширования паролей
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     // Регистрация нового пользователя
     @PostMapping("/register")

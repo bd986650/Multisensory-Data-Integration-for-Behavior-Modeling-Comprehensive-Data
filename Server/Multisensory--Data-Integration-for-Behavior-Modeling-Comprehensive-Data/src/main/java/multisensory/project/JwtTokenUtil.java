@@ -1,4 +1,4 @@
-package com.example.demo;
+package multisensory.project;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -7,25 +7,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import java.util.Base64;
+import java.util.*;
 
 @Component
 public class JwtTokenUtil {
 
-    // Загружаем секретную фразу из настроек (application.properties или application.yml)
+    // Загружаем секретную фразу из настроек (application.properties)
     @Value("${jwt.secret}")
     private String secretKeyString;  // секретная строка, которая задается в конфигурации
 
     private SecretKey secretKey; // ключ для подписи JWT
     private final long EXPIRATION_TIME = 86400000; // Время жизни токена (24 часа)
-
-    // Инициализация секретного ключа
-    public JwtTokenUtil() {
-    }
 
     @PostConstruct
     public void init() {
@@ -49,26 +41,16 @@ public class JwtTokenUtil {
 
     // Получение userId из токена
     public UUID extractUserId(String token) {
-        Claims claims = getClaimsFromToken(token);
+        String tokenWithoutBearer = token.substring(7); // Убираем "Bearer " из токена
+        Claims claims = getClaimsFromToken(tokenWithoutBearer);
         String userIdStr = claims.get("userId", String.class);  // Извлекаем userId как строку
         return UUID.fromString(userIdStr);  // Преобразуем строку в UUID
     }
 
-    // Получение имени пользователя из токена
-    public String getUsernameFromToken(String token) {
-        Claims claims = getClaimsFromToken(token);
-        return claims.getSubject();
-    }
-
-    // Проверка токена
-    public boolean validateToken(String token, String username) {
-        String tokenUsername = getUsernameFromToken(token);
-        return (tokenUsername.equals(username) && !isTokenExpired(token));
-    }
-
     // Проверка срока действия токена
-    private boolean isTokenExpired(String token) {
-        Date expiration = getClaimsFromToken(token).getExpiration();
+    public boolean isTokenExpired(String token) {
+        String tokenWithoutBearer = token.substring(7); // Убираем "Bearer " из токена
+        Date expiration = getClaimsFromToken(tokenWithoutBearer).getExpiration();
         return expiration.before(new Date());
     }
 

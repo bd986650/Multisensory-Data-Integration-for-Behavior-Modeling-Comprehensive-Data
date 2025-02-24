@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="" />
+    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid18700.log" beforeDir="false" afterPath="$PROJECT_DIR$/hs_err_pid18700.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid5552.log" beforeDir="false" afterPath="$PROJECT_DIR$/hs_err_pid5552.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/JwtTokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/UserData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +28,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -35,13 +50,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor": "Run",
+    "Application.multisensory.project.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/miki/Desktop/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data",
+    "last_opened_file_path": "/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propCompiler"
+    "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -50,8 +67,8 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication" />
+    <configuration name="multisensory.project.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="multisensory.project.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication" />
       <module name="Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data" />
       <extension name="coverage">
         <pattern>
@@ -65,7 +82,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication" />
+        <item itemvalue="Application.multisensory.project.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -79,5 +96,16 @@
       <updated>1729001148335</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
