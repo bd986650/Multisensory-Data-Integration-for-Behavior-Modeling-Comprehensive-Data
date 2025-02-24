@@ -1,4 +1,4 @@
-package com.example.demo;
+package multisensory.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -24,11 +22,14 @@ public class UserController {
             @RequestHeader("Authorization") String token,  // JWT токен
             @RequestBody String jsonData) { // JSON данные напрямую как строка
 
-        // Извлекаем userId из токена
-        String tokenWithoutBearer = token.substring(7); // Убираем "Bearer " из токена
-        UUID userId = jwtTokenUtil.extractUserId(tokenWithoutBearer); // Извлекаем userId
-        System.out.println("uid: " + userId);
+        // Проверяем действителен ли токен
+        if (jwtTokenUtil.isTokenExpired(token)) {
+            return ResponseEntity.status(401).body("Token has expired, please refresh your token");
+        }
 
+        // Извлекаем userId из токена
+        UUID userId = jwtTokenUtil.extractUserId(token); // Извлекаем userId
+        System.out.println("uid: " + userId);
 
         try {
             // Сохранение данных в базу данных (таймштамп и json)
@@ -44,14 +45,18 @@ public class UserController {
     }
 
     // Новый метод для получения данных по JWT и таймштампу
-    @PostMapping("/get-data")
+    @GetMapping("/get-data")
     public ResponseEntity<?> getData(
             @RequestHeader("Authorization") String token,  // JWT токен
             @RequestParam Long timestamp) {  // Таймштамп
 
+        // Проверяем действителен ли токен
+        if (jwtTokenUtil.isTokenExpired(token)) {
+            return ResponseEntity.status(401).body("Token has expired, please refresh your token");
+        }
+
         // Извлекаем userId из токена
-        String tokenWithoutBearer = token.substring(7); // Убираем "Bearer " из токена
-        UUID userId = jwtTokenUtil.extractUserId(tokenWithoutBearer); // Извлекаем userId
+        UUID userId = jwtTokenUtil.extractUserId(token); // Извлекаем userId
         System.out.println("uid: " + userId);
 
         // Преобразуем timestamp в LocalDateTime
@@ -73,12 +78,4 @@ public class UserController {
             return ResponseEntity.status(500).body("Error during database operation");
         }
     }
-
-    /*/ Удалить пользователя
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userRepository.deleteById(id);
-        return ResponseEntity.ok().build();
-    }
-     */
 }

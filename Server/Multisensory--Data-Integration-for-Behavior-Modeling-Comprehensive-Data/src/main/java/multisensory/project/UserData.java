@@ -1,4 +1,4 @@
-package com.example.demo;
+package multisensory.project;
 
 import java.util.UUID;
 
@@ -23,8 +23,6 @@ public class UserData {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 }
 
