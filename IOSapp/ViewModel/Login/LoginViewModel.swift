@@ -1,36 +1,25 @@
-//
-//  LoginViewModel.swift
-//  MutlisensoryDataIntegration
-//
-//  Created by chouqxwhatdouknow on 02.12.2024.
-//
-
 import Foundation
 import SwiftUI
 
 class LoginViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
-    
+
     @AppStorage("jwtToken") var jwtToken: String = ""
-    
+    @AppStorage("refreshToken") var refreshToken: String = ""
+
     @Published var showPSWDField: Bool = false
-    
     @Published var errorMessage: String = ""
     @Published var showError: Bool = false
-    
-    @Published var isInputDataIncorrect: Bool = false
-    
     @AppStorage("isRegistered") private var isRegistered: Bool = false
+    @AppStorage("isLogined") private var isLogined: Bool = false
     
-    @StateObject var settingsVM: SettingsViewModel = .init()
-        
     func isShowPSWDField() {
-        showPSWDField = username != "" ? true : false
+        showPSWDField = !username.isEmpty
     }
-    
+
     func loginUser(username: String, password: String) {
-        guard let url = URL(string: "http://172.20.10.14:8080/api/auth/login?username=\(username)&password=\(password)") else {
+        guard let url = URL(string: "\(Constants.baseURL)/api/auth/login?username=\(username)&password=\(password)") else {
             setError(message: "Неверный URL")
             return
         }
@@ -50,26 +39,41 @@ class LoginViewModel: ObservableObject {
             if let httpResponse = response as? HTTPURLResponse {
                 print("Код ответа: \(httpResponse.statusCode)")
                 
-                if httpResponse.statusCode == 200 {
-                    print("Авторизация успешна")
-                    
-                    if let data = data, let token = String(data: data, encoding: .utf8) {
-                        settingsVM.jwtToken = token
-                        jwtToken = token
-                        print("Полученный токен: \(token)")
-                        UserDefaults.standard.set(token, forKey: "jwtToken")
-                    }
-                } else if httpResponse.statusCode == 401 {
-                    isInputDataIncorrect = true
-                    self.setError(message: "Ошибка авторизации: Неверные учетные данные")
-                } else {
+                guard httpResponse.statusCode == 200 else {
                     self.setError(message: "Ошибка: Сервер вернул код \(httpResponse.statusCode)")
+                    return
+                }
+                
+                if let data = data {
+                    do {
+                        // Декодируем данные в структуру LoginResponse
+                        let tokenResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            self.jwtToken = tokenResponse.accessToken // Используем accessToken
+                            self.refreshToken = tokenResponse.refreshToken // Используем refreshToken
+                            
+                            print("JWT: \(tokenResponse.accessToken)") // Выводим accessToken
+                            print("Refresh Token: \(tokenResponse.refreshToken)") // Выводим refreshToken
+                            
+                            UserDefaults.standard.set(tokenResponse.accessToken, forKey: "jwtToken")
+                            UserDefaults.standard.set(tokenResponse.refreshToken, forKey: "refreshToken")
+                            
+                            self.isLogined = true
+                        }
+                    } catch {
+                        self.setError(message: "Ошибка декодирования JSON: \(error.localizedDescription)")
+                    }
                 }
             }
         }.resume()
     }
 
-    
+    // Ответ сервера при логине (JWT + Refresh Token)
+    struct LoginResponse: Codable {
+        let accessToken: String
+        let refreshToken: String
+    }
+
     private func setError(message: String) {
         DispatchQueue.main.async {
             self.errorMessage = message
@@ -77,5 +81,4 @@ class LoginViewModel: ObservableObject {
         }
     }
 }
-
 

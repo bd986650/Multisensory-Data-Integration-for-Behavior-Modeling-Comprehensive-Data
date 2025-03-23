@@ -1,173 +1,182 @@
-//
-//  HealthStore.swift
-//  MutlisensoryDataIntegration
-//
-//  Created by chouqxwhatdouknow on 15.10.2024.
-//
-
 import Foundation
 import HealthKit
 import SwiftUI
 
 class HealthViewModel: ObservableObject {
     private var healthStore = HKHealthStore()
-    private var timer: Timer?
-    
-    @Published var healthDataHistory: [HealthDataModel] = []
-    @StateObject private var settingsVM: SettingsViewModel = .init()
 
-    let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-    let distanceWalkingRunningType = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
-    let activeEnergyBurnedType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
-    let sleepAnalysisType = HKCategoryType.categoryType(forIdentifier: .sleepAnalysis)!
-    let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
-    let bodyMassType = HKQuantityType.quantityType(forIdentifier: .bodyMass)!
-    let heightType = HKQuantityType.quantityType(forIdentifier: .height)!
-    let bodyMassIndexType = HKQuantityType.quantityType(forIdentifier: .bodyMassIndex)!
+    @Published var healthDataHistory: [HealthDataModel] = []
+    @AppStorage("jwtToken") var jwtToken: String = ""
+    @AppStorage("refreshToken") var refreshToken: String = ""
+
+    private var anchor: HKQueryAnchor?
 
     func requestAuthorization() {
         let typesToRead: Set<HKObjectType> = [
-            stepCountType,
-            distanceWalkingRunningType,
-            activeEnergyBurnedType,
-            sleepAnalysisType,
-            heartRateType,
-            bodyMassType,
-            heightType,
-            bodyMassIndexType
+            HKQuantityType.quantityType(forIdentifier: .stepCount)!
         ]
-        
+
         healthStore.requestAuthorization(toShare: nil, read: typesToRead) { success, error in
             if success {
-                print("Authorization granted")
+                print("HealthKit: Авторизация получена")
+                self.startObservingSteps()
             } else {
-                print("Authorization denied: \(error?.localizedDescription ?? "Unknown error")")
+                print("HealthKit: Ошибка авторизации - \(error?.localizedDescription ?? "неизвестная ошибка")")
             }
         }
     }
-    
-    func getHealthData(completion: @escaping ([String: Double]) -> Void) {
-        let calendar = Calendar.current
-        let startDate = calendar.startOfDay(for: Date())
-        let endDate = Date()
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
-        
-        var healthData: [String: Double] = [:]
-        
-        let group = DispatchGroup()
 
-        group.enter()
-        getQuantityData(for: stepCountType, unit: HKUnit.count(), predicate: predicate) { steps in
-            healthData["Steps"] = steps
-            group.leave()
+    func startObservingSteps() {
+        let query = HKObserverQuery(sampleType: HKQuantityType.quantityType(forIdentifier: .stepCount)!, predicate: nil) { _, _, error in
+            if let error = error {
+                print("HealthKit: Ошибка ObserverQuery - \(error.localizedDescription)")
+                return
+            }
+            self.fetchNewStepData()
         }
 
-        group.enter()
-        getQuantityData(for: distanceWalkingRunningType, unit: HKUnit.meter(), predicate: predicate) { distance in
-            healthData["Distance Walking/Running"] = distance
-            group.leave()
-        }
-
-        group.enter()
-        getQuantityData(for: activeEnergyBurnedType, unit: HKUnit.kilocalorie(), predicate: predicate) { calories in
-            healthData["Active Energy Burned"] = calories
-            group.leave()
-        }
-
-        group.enter()
-        getSleepAnalysisData(predicate: predicate) { sleepDuration in
-            healthData["Sleep Analysis (hours)"] = sleepDuration
-            group.leave()
-        }
-        
-        group.enter()
-        getQuantityData(for: heartRateType, unit: HKUnit(from: "count/min"), predicate: predicate) { heartRate in
-            healthData["Heart Rate (bpm)"] = heartRate
-            group.leave()
-        }
-        
-        group.enter()
-        getQuantityData(for: bodyMassType, unit: HKUnit.gramUnit(with: .kilo), predicate: predicate) { bodyMass in
-            healthData["Body Mass (kg)"] = Double(self.settingsVM.weight)
-            group.leave()
-        }
-        
-        group.enter()
-        getQuantityData(for: heightType, unit: HKUnit.meter(), predicate: predicate) { height in
-            healthData["Height (m)"] = Double(self.settingsVM.height)
-            group.leave()
-        }
-        
-        group.enter()
-        getQuantityData(for: bodyMassIndexType, unit: HKUnit.count(), predicate: predicate) { bmi in
-            let height = Double(self.settingsVM.height) ?? 0.0
-            let weight = Double(self.settingsVM.weight)  ?? 0.0
-            healthData["BMI"] = weight / ((height * height) / 10000)
-            group.leave()
-        }
-
-        group.notify(queue: .main) {
-            completion(healthData)
+        healthStore.execute(query)
+        healthStore.enableBackgroundDelivery(for: HKQuantityType.quantityType(forIdentifier: .stepCount)!, frequency: .immediate) { success, error in
+            if let error = error {
+                print("HealthKit: Ошибка фона - \(error.localizedDescription)")
+            }
         }
     }
 
-    private func getQuantityData(for type: HKQuantityType, unit: HKUnit, predicate: NSPredicate, completion: @escaping (Double) -> Void) {
-        let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, results, error in
-            var total: Double = 0
-            if let results = results as? [HKQuantitySample] {
-                total = results.reduce(0) { $0 + $1.quantity.doubleValue(for: unit) }
+    func fetchNewStepData() {
+        let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        let query = HKAnchoredObjectQuery(type: stepType, predicate: nil, anchor: anchor, limit: HKObjectQueryNoLimit) { query, samples, _, newAnchor, error in
+            guard let samples = samples as? [HKQuantitySample], error == nil else { return }
+            self.anchor = newAnchor
+
+            let newEntries = samples.map { sample in
+                let stepCount = sample.quantity.doubleValue(for: HKUnit.count())
+                let startTime = sample.startDate
+                let endTime = sample.endDate
+
+                return HealthDataModel(
+                    timestamp: startTime,
+                    data: [
+                        "Steps": stepCount,
+                        "Start Time": startTime.timeIntervalSince1970,
+                        "End Time": endTime.timeIntervalSince1970
+                    ]
+                )
             }
+
             DispatchQueue.main.async {
-                completion(total)
+                self.healthDataHistory.append(contentsOf: newEntries)
+                self.saveHealthDataToUserDefaults()
+                self.sendStepsToServer(steps: newEntries)
             }
         }
+
         healthStore.execute(query)
     }
 
-    private func getSleepAnalysisData(predicate: NSPredicate, completion: @escaping (Double) -> Void) {
-        let query = HKSampleQuery(sampleType: sleepAnalysisType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, results, error in
-            var sleepDuration: Double = 0
-            if let results = results as? [HKCategorySample] {
-                for result in results {
-                    if result.value == HKCategoryValueSleepAnalysis.asleep.rawValue {
-                        let sleepTime = result.endDate.timeIntervalSince(result.startDate) / 3600
-                        sleepDuration += sleepTime
+    func sendStepsToServer(steps: [HealthDataModel]) {
+        guard let token = UserDefaults.standard.string(forKey: "jwtToken") else {
+            print("Ошибка: Токен отсутствует")
+            return
+        }
+
+        // Для каждого шага создаём строку в формате timestamp:steps_count
+        let stepsValue = steps.map { step in
+            return "\(Int(step.timestamp.timeIntervalSince1970)):\(step.data["Steps"] ?? 0)"
+        }.joined(separator: ",")
+
+        // Формируем URL строку с шагами
+        let urlString = "\(Constants.baseURL)/api/users/save?type=steps&value=\(stepsValue)&timestamp=\(Int(Date().timeIntervalSince1970))"
+        
+        guard let url = URL(string: urlString) else {
+            print("Ошибка: Неверный URL")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Ошибка запроса: \(error.localizedDescription)")
+                    return
+                }
+
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        print("Шаги успешно сохранены на сервере!")
+                    } else if httpResponse.statusCode == 401 {
+                        print("⚠️ Токен устарел, обновляем...")
+                        self?.refreshJWTToken { success in
+                            if success {
+                                self?.sendStepsToServer(steps: steps) // Повторная отправка
+                            } else {
+                                print("⛔ Ошибка обновления токена")
+                            }
+                        }
+                    } else {
+                        print("Ошибка: Сервер вернул код \(httpResponse.statusCode)")
+                        if let data = data, let errorMessage = String(data: data, encoding: .utf8) {
+                            print("Сообщение об ошибке: \(errorMessage)")
+                        }
                     }
                 }
             }
-            DispatchQueue.main.async {
-                completion(sleepDuration)
-            }
+        }.resume()
+    }
+
+
+    private func refreshJWTToken(completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: "\(Constants.baseURL)/api/auth/refresh") else {
+            completion(false)
+            return
         }
-        healthStore.execute(query)
-    }
-    
-    func startBackgroundTask() {
-        // Таймер для сбора данных каждые 6 часов
-        timer = Timer.scheduledTimer(withTimeInterval: 21600, repeats: true) { _ in
-            self.getHealthData { data in
-                let healthDataEntry = HealthDataModel(timestamp: Date(), data: data)
-                self.healthDataHistory.append(healthDataEntry)
-                self.saveHealthDataToUserDefaults()
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(refreshToken)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Ошибка обновления токена: \(error.localizedDescription)")
+                completion(false)
+                return
             }
-        }
+
+            if let httpResponse = response as? HTTPURLResponse {
+                guard httpResponse.statusCode == 200 else {
+                    print("Ошибка обновления токена: Сервер вернул \(httpResponse.statusCode)")
+                    completion(false)
+                    return
+                }
+
+                if let data = data {
+                    do {
+                        let tokenResponse = try JSONDecoder().decode(TokenResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            self.jwtToken = tokenResponse.jwt
+                            self.refreshToken = tokenResponse.refresh
+
+                            UserDefaults.standard.set(tokenResponse.jwt, forKey: "jwtToken")
+                            UserDefaults.standard.set(tokenResponse.refresh, forKey: "refreshToken")
+                        }
+                        completion(true)
+                    } catch {
+                        print("Ошибка декодирования нового токена: \(error.localizedDescription)")
+                        completion(false)
+                    }
+                }
+            }
+        }.resume()
     }
-    
-    func stopBackgroundTask() {
-        timer?.invalidate()
-    }
-    
+
     private func saveHealthDataToUserDefaults() {
         if let encodedData = try? JSONEncoder().encode(healthDataHistory) {
             UserDefaults.standard.set(encodedData, forKey: "healthDataHistory")
-        }
-    }
-    
-    func loadHealthDataFromUserDefaults() {
-        if let savedData = UserDefaults.standard.data(forKey: "healthDataHistory"),
-           let decodedData = try? JSONDecoder().decode([HealthDataModel].self, from: savedData) {
-            self.healthDataHistory = decodedData
         }
     }
 }

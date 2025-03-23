@@ -11,6 +11,7 @@ struct RegisterView: View {
     @StateObject var registerVM: RegisterViewModel = .init()
     
     @Binding var userIsRegistred: Bool
+    @Binding var isLogined: Bool // Добавляем привязку к isLogined
     
     @State var errorIncorrectInputData: Bool = false
     
@@ -115,7 +116,8 @@ struct RegisterView: View {
                 
                 Button {
                     withAnimation(.easeInOut) {
-                        userIsRegistred.toggle()
+                        userIsRegistred.toggle() // Переключаем на экран логина
+                        isLogined = false // Устанавливаем isLogined в false, так как мы сейчас находимся в процессе регистрации
                     }
                 } label: {
                     Text("Already have account?")
@@ -132,4 +134,3 @@ struct RegisterView: View {
         }
     }
 }
-

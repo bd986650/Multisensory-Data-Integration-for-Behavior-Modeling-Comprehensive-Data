@@ -10,10 +10,6 @@ struct CodableCoordinate: Codable {
         self.latitude = coordinate.latitude
         self.longitude = coordinate.longitude
     }
-    
-    func toCLLocationCoordinate2D() -> CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    }
 }
 
 final class LocationViewModel: NSObject, CLLocationManagerDelegate, ObservableObject {
@@ -29,28 +25,29 @@ final class LocationViewModel: NSObject, CLLocationManagerDelegate, ObservableOb
     var manager = CLLocationManager()
     let geocoder = CLGeocoder()
     
-    func checkLocationAuthorization() {
+    override init() {
+        super.init()
         manager.delegate = self
+    }
+    
+    func checkLocationAuthorization() {
         manager.startUpdatingLocation()
         
         switch manager.authorizationStatus {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
             
-        case .restricted:
-            print("Location restricted")
-            
-        case .denied:
-            print("Location denied")
+        case .restricted, .denied:
+            print("Доступ к геолокации запрещен")
             
         case .authorizedAlways, .authorizedWhenInUse:
-            print("Location authorized")
+            print("Геолокация разрешена")
             if let location = manager.location {
                 updateLocation(location)
             }
             
         @unknown default:
-            print("Location service disabled")
+            print("Неизвестный статус геолокации")
         }
     }
     
@@ -83,26 +80,149 @@ final class LocationViewModel: NSObject, CLLocationManagerDelegate, ObservableOb
                     .joined(separator: ", ")
             } else {
                 self.locationName = "Unknown Location"
-                print("Error in reverse geocoding: \(error?.localizedDescription ?? "Unknown error")")
+                print("Ошибка обратного геокодирования: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
     }
 
     private func checkAndStoreLocation(_ newLocation: CLLocation) {
         guard let lastLocation = savedLocations.last else {
-            // Если массив пуст, просто сохраняем первую координату
             savedLocations.append(newLocation.coordinate)
+            sendLocationToServer(newLocation.coordinate)
             return
         }
 
-        // Вычисляем расстояние между последней сохраненной координатой и текущей
-        let distance = newLocation.distance(from:
-            CLLocation(latitude: lastLocation.latitude, longitude: lastLocation.longitude))
+        let distance = newLocation.distance(from: CLLocation(latitude: lastLocation.latitude, longitude: lastLocation.longitude))
 
-        // Если расстояние больше 100 метров, сохраняем координаты
         if distance > 100 {
             savedLocations.append(newLocation.coordinate)
-            print("New location saved: \(newLocation.coordinate)")
+            sendLocationToServer(newLocation.coordinate)
         }
+    }
+
+    // 🚀 Функция отправки геолокации на сервер
+    private func sendLocationToServer(_ coordinate: CLLocationCoordinate2D, retry: Bool = true) {
+        guard let token = UserDefaults.standard.string(forKey: "jwtToken") else {
+            print("Ошибка: Токен отсутствует")
+            return
+        }
+
+//        let locationData: [String: Any] = [
+//            "value": "\(coordinate.latitude):\(coordinate.longitude)",
+//            "type": "coordinates",
+//            "timestamp": Int(Date().timeIntervalSince1970) // Время в секундах с 1970
+//        ]
+//
+//        guard let jsonData = try? JSONSerialization.data(withJSONObject: locationData) else {
+//            print("Ошибка сериализации JSON")
+//            return
+//        }
+
+//        guard let url = URL(string: "\(Constants.baseURL)/api/users/save") else {
+//            print("Ошибка: Неверный URL")
+//            return
+//        }
+//
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.httpBody = jsonData
+        
+        let urlString = "\(Constants.baseURL)/api/users/save?type=coordinates&value=\(coordinate.latitude):\(coordinate.longitude)&timestamp=\(Int(Date().timeIntervalSince1970))"
+        guard let url = URL(string: urlString) else {
+            print("Ошибка: Неверный URL")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Ошибка запроса: \(error.localizedDescription)")
+                    return
+                }
+
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        print("📍 Локация успешно сохранена на сервере!")
+                    } else if httpResponse.statusCode == 401, retry {
+                        print("⚠️ Токен устарел, обновляем...")
+                        self?.refreshToken { success in
+                            if success {
+                                self?.sendLocationToServer(coordinate, retry: false)
+                            } else {
+                                print("⛔ Ошибка обновления токена")
+                            }
+                        }
+                    } else {
+                        print("Ошибка: Сервер вернул код \(httpResponse.statusCode)")
+                        if let data = data, let errorMessage = String(data: data, encoding: .utf8) {
+                            print("Сообщение об ошибке: \(errorMessage)")
+                        }
+                    }
+                }
+            }
+        }.resume()
+    }
+
+
+    // 🚀 Функция обновления токена
+    private func refreshToken(completion: @escaping (Bool) -> Void) {
+        guard let refreshToken = UserDefaults.standard.string(forKey: "refreshToken") else {
+            print("Ошибка: Refresh Token отсутствует")
+            completion(false)
+            return
+        }
+
+        guard let url = URL(string: "\(Constants.baseURL)/api/auth/refresh") else {
+            print("Ошибка: Неверный URL")
+            completion(false)
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let refreshData: [String: Any] = ["refreshToken": refreshToken]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: refreshData)
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Ошибка запроса обновления токена: \(error.localizedDescription)")
+                    completion(false)
+                    return
+                }
+
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let data = data {
+                    do {
+                        if let json = try JSONSerialization.jsonObject(with: data) as? [String: String],
+                           let newToken = json["jwtToken"],
+                           let newRefreshToken = json["refreshToken"] {
+                            UserDefaults.standard.set(newToken, forKey: "jwtToken")
+                            UserDefaults.standard.set(newRefreshToken, forKey: "refreshToken")
+                            print("✅ Токен успешно обновлен")
+                            completion(true)
+                        } else {
+                            print("Ошибка парсинга ответа сервера")
+                            completion(false)
+                        }
+                    } catch {
+                        print("Ошибка обработки JSON: \(error.localizedDescription)")
+                        completion(false)
+                    }
+                } else {
+                    print("Ошибка обновления токена: Сервер вернул некорректный ответ")
+                    completion(false)
+                }
+            }
+        }.resume()
     }
 }

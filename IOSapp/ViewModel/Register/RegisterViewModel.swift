@@ -15,18 +15,12 @@ class RegisterViewModel: ObservableObject {
     @AppStorage("jwtToken") var jwtToken: String = ""
     
     @Published var userIsRegistred: Bool = false
-    
     @Published var showPSWDField: Bool = false
-    
     @Published var errorMessage: String = ""
     @Published var showError: Bool = false
-    
     @Published var userAlreadyRegistred: Bool = false
-    
+
     @AppStorage("isRegistered") private var isRegistered: Bool = false
-    @AppStorage("isLogined") private var isLogined: Bool = false
-    
-    @StateObject var settingsVM: SettingsViewModel = .init()
     
     func checkIsCorrectUsername() -> Bool {
         // Правила для имени пользователя:
@@ -51,10 +45,9 @@ class RegisterViewModel: ObservableObject {
     func isShowPSWDField() {
         showPSWDField = username != "" ? true : false
     }
-    
+
     func registerUserAndRequestToken(username: String, password: String) {
-        guard let url = URL(string: "http://172.20.10.14:8080/api/auth/register?username=\(username)&password=\(password)")
-        else {
+        guard let url = URL(string: "\(Constants.baseURL)/api/auth/register?username=\(username)&password=\(password)") else {
             setError(message: "Неверный URL")
             return
         }
@@ -66,38 +59,44 @@ class RegisterViewModel: ObservableObject {
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
             
-            guard error == nil else {
-                self.setError(message: "Ошибка запроса: \(error!.localizedDescription)")
+            if let error = error {
+                self.setError(message: "Ошибка запроса: \(error.localizedDescription)")
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse {
                 print("Код ответа: \(httpResponse.statusCode)")
                 
-                if httpResponse.statusCode == 200 {
-                    isRegistered = true
-                    
-                    settingsVM.username = username
-                    settingsVM.password = password
-                    
-                    print("Запрос успешен")
-                    
-                    if let data = data, let token = String(data: data, encoding: .utf8) {
-                        settingsVM.jwtToken = token
-                        jwtToken = token
-                        print("Полученный токен: \(token)")
-                        UserDefaults.standard.set(token, forKey: "jwtToken")
+                guard httpResponse.statusCode == 200 else {
+                    if httpResponse.statusCode == 400 {
+                        DispatchQueue.main.async {
+                            self.userAlreadyRegistred = true
+                            self.isRegistered = true
+                        }
+                    } else {
+                        self.setError(message: "Ошибка: Сервер вернул код \(httpResponse.statusCode)")
                     }
+                    return
                 }
-                else if httpResponse.statusCode == 400 {
-                    userAlreadyRegistred = true
-                }
-                else {
-                    self.setError(message: "Ошибка: Сервер вернул код \(httpResponse.statusCode)")
-                    print("error, \(httpResponse.statusCode)")
-                }
+                
+                if let data = data, let jwtString = String(data: data, encoding: .utf8) {
+                                DispatchQueue.main.async {
+                                    self.isRegistered = true
+                                    self.jwtToken = jwtString.trimmingCharacters(in: .whitespacesAndNewlines) 
+                                    
+                                    print("JWT: \(self.jwtToken)")
+                                    
+                                    UserDefaults.standard.set(self.jwtToken, forKey: "jwtToken")
+                                }
+                            } else {
+                                self.setError(message: "Ошибка: Данные не являются строкой JWT")
+                            }
             }
         }.resume()
+    }
+
+    struct RegistrationResponse: Codable {
+        let jwt: String
     }
     
     private func setError(message: String) {
@@ -107,5 +106,3 @@ class RegisterViewModel: ObservableObject {
         }
     }
 }
-
-

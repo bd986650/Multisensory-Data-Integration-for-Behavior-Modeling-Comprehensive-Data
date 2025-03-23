@@ -3,11 +3,10 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject var loginVM: LoginViewModel = .init()
-    
     @State var errorIncorrectInputData: Bool = false
-    
     @Binding var userIsRegistred: Bool
-    
+    @Binding var isLogined: Bool // Добавляем привязку к isLogined
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -89,7 +88,8 @@ struct LoginView: View {
                 
                 Button {
                     withAnimation(.easeInOut) {
-                        userIsRegistred.toggle()
+                        userIsRegistred.toggle() // Переключаем на экран регистрации
+                        isLogined = false // Устанавливаем isLogined в false, так как мы сейчас находимся в процессе логина
                     }
                 } label: {
                     Text("Don't have account?")
@@ -104,6 +104,5 @@ struct LoginView: View {
         .alert(loginVM.errorMessage, isPresented: $loginVM.showError) {
             Button("OK", role: .cancel) { }
         }
-        
     }
 }

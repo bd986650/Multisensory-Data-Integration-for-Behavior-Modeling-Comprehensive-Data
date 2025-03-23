@@ -10,29 +10,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            TabView {
-                Form {
-                    HealthView()
-                    
-                    LocationView()
-                    
-                }
-                .tabItem {
-                    VStack {
-                        Image(systemName: "target")
-                        
-                        Text("Activity")
-                    }
-                }
+            Form {
+                HealthView()
                 
-                SettingsView()
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "gear")
-                            
-                            Text("Settings")
-                        }
-                    }
+                LocationView()
             }
         }
     }

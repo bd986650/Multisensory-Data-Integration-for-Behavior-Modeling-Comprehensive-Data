@@ -1,19 +1,16 @@
-//
-//  HealthView .swift
-//  MutlisensoryDataIntegration
-//
-//  Created by chouqxwhatdouknow on 14.10.2024.
-//
-
 import SwiftUI
-import Foundation
-import HealthKit
 
 struct HealthView: View {
     @StateObject var healthVM = HealthViewModel()
-    
     @State var healthData: [String: Double] = [:]
     
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+
     var body: some View {
         Section {
             List(healthData.keys.sorted(), id: \.self) { key in
@@ -21,7 +18,11 @@ struct HealthView: View {
                     HStack {
                         Text("\(key):")
                         Spacer()
-                        Text("\(value, specifier: "%.2f")")
+                        if key == "Start Time" || key == "End Time" {
+                            Text("\(Date(timeIntervalSince1970: value), formatter: dateFormatter)")
+                        } else {
+                            Text("\(value, specifier: "%.2f")")
+                        }
                     }
                 }
             }
@@ -29,26 +30,27 @@ struct HealthView: View {
             Button {
                 healthVM.requestAuthorization()
             } label: {
-                Text(("Request access to health data"))
+                Text("Request access to health data")
             }
-            
+
             Button {
-                healthVM.getHealthData { data in
-                    healthData = data
-                }
+                healthVM.fetchNewStepData() // ❗️ Используем правильную функцию
             } label: {
                 Text("Get health data")
             }
         } header: {
-            Text("Health")
+            Text("Health Data")
         }
         .onAppear {
             healthVM.requestAuthorization()
-            healthVM.loadHealthDataFromUserDefaults()
-            healthVM.startBackgroundTask()
+            healthVM.fetchNewStepData()
         }
-        .onDisappear {
-            healthVM.stopBackgroundTask()
+        .onReceive(healthVM.$healthDataHistory) { newHistory in
+            DispatchQueue.main.async {
+                if let latest = newHistory.last {
+                    healthData = latest.data
+                }
+            }
         }
     }
 }
@@ -56,3 +58,4 @@ struct HealthView: View {
 #Preview {
     HealthView()
 }
+
