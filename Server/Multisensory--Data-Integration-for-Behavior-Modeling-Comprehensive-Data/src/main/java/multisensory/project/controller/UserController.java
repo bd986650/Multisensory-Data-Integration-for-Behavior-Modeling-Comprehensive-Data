@@ -20,8 +20,8 @@ public class UserController {
     @Autowired
     JwtTokenService jwtTokenService;
 
-    private static final String INFLUXDB_URL = "http://localhost:8086/api/v2/write";
-    private static final String INFLUXDB_QUERY_URL = "http://localhost:8086/api/v2/query";
+    private static final String INFLUXDB_URL = "http://influxdb:8086/api/v2/write";
+    private static final String INFLUXDB_QUERY_URL = "http://influxdb:8086/api/v2/query";
     private static final String AUTH_TOKEN = "fN0LMtZOBct_OEjMrYDc2_POBLJcDMPvBle" +
             "_e7sNx1nwlw4lDDmak0iJ3Ceer204zC9aPSwOM_TPppvLZ9qqCA=="; // Ваш токен InfluxDB
     private static final String ORG = "MultiSens";  // Организация в InfluxDB
@@ -72,7 +72,7 @@ public class UserController {
 
         // Создаем заголовки с авторизацией
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + AUTH_TOKEN);  // Передаем токен в формате Bearer
+        headers.set("Authorization", "Token " + AUTH_TOKEN);  // Передаем токен в формате Bearer
         headers.setContentType(MediaType.TEXT_PLAIN);  // Убедитесь, что тип контента правильный
 
         // Создаем тело запроса
@@ -81,7 +81,6 @@ public class UserController {
         // Отправляем запрос в InfluxDB
         try {
             ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
-
             // Логирование ответа
             System.out.println("Response from InfluxDB: " + response.getStatusCode() + " " + response.getBody());
 
@@ -133,7 +132,7 @@ public class UserController {
 
         // Создаем заголовки
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + AUTH_TOKEN);  // Используем формат Bearer для авторизации
+        headers.set("Authorization", "Token " + AUTH_TOKEN);  // Используем формат Bearer для авторизации
         headers.setContentType(MediaType.APPLICATION_JSON);
         // Создаем тело запроса
         HttpEntity<String> entity = new HttpEntity<>(query, headers);

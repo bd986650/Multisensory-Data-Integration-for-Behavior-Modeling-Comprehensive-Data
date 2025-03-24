@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/model/AuthTokensDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/model/MetricData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/model/RefreshToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/repository/RefreshTokenRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/JwtTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/UserData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,6 +94,9 @@
       <updated>1729001148335</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="docker-compose.yml" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
