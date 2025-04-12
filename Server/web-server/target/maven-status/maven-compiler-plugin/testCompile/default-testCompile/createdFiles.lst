@@ -1,0 +1,5 @@
+multisensory/project/controller/UserControllerTest.class
+multisensory/project/service/UserServiceTest.class
+multisensory/project/repository/UserRepositoryTest.class
+multisensory/project/service/JwtTokenServiceTest.class
+multisensory/project/service/RefreshTokenServiceTest.class
