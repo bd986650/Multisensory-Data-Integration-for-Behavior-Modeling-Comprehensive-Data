@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/config/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/MetricController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/MetricService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/controller/UserControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/repository/UserRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/JwtTokenServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/RefreshTokenServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/UserServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/application-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/repository/RefreshTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/repository/RefreshTokenRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/JwtTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
