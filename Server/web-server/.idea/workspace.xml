@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="" />
+    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/MetricController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/MetricService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/controller/UserControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/repository/UserRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/JwtTokenServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/RefreshTokenServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/UserServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/repository/RefreshTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/repository/RefreshTokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/JwtTokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,41 +63,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor": "Run",
-    "Application.multisensory.project.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor": "Run",
-    "JUnit.AuthControllerTest.AuthController_LoginUser_ReturnBothTokens.executor": "Run",
-    "JUnit.AuthControllerTest.AuthController_RefreshToken_ReturnAccessToken.executor": "Run",
-    "JUnit.AuthControllerTest.AuthController_Register_ReturnToken.executor": "Run",
-    "JUnit.AuthControllerTest.executor": "Run",
-    "JUnit.JwtTokenServiceTest.JwtTokenService_ExtractExpirationTime_ReturnUUID.executor": "Run",
-    "JUnit.JwtTokenServiceTest.JwtTokenService_ExtractUserId_ReturnUUID.executor": "Run",
-    "JUnit.JwtTokenServiceTest.JwtTokenService_GenerateToken_ReturnToken.executor": "Run",
-    "JUnit.JwtTokenServiceTest.JwtTokenService_HashToken_ReturnHashedToken.executor": "Run",
-    "JUnit.JwtTokenServiceTest.JwtTokenService_IsTokenExpired_ReturnBoolean.executor": "Run",
-    "JUnit.JwtTokenServiceTest.executor": "Run",
-    "JUnit.RefreshTokenServiceTest.RefreshTokenService_GenerateRefreshToken_ReturnNewToken.executor": "Run",
-    "JUnit.RefreshTokenServiceTest.RefreshTokenService_RefreshToken_ReturnNewToken.executor": "Run",
-    "JUnit.RefreshTokenServiceTest.executor": "Run",
-    "JUnit.UserControllerTest.UserController_RegisterUser_ReturnToken.executor": "Run",
-    "JUnit.UserRepositoryTest.UserRepository_FindByName_ReturnUser.executor": "Run",
-    "JUnit.UserRepositoryTest.executor": "Debug",
-    "JUnit.UserServiceTest.UserService_ExistByUsername_UserExists.executor": "Run",
-    "JUnit.UserServiceTest.UserService_FindByName_UserDoesNotExist.executor": "Run",
-    "JUnit.UserServiceTest.UserService_FindByName_UserExists.executor": "Run",
-    "JUnit.UserServiceTest.UserService_UserRegister_ReturnToken.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data/src/main/java/multisensory/project",
-    "last_opened_file_path": "/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editor.reader.mode"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.multisensory.project.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthControllerTest.AuthController_LoginUser_ReturnBothTokens.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthControllerTest.AuthController_RefreshToken_ReturnAccessToken.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthControllerTest.AuthController_Register_ReturnToken.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_ExtractExpirationTime_ReturnUUID.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_ExtractUserId_ReturnUUID.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_GenerateToken_ReturnToken.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_HashToken_ReturnHashedToken.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_IsTokenExpired_ReturnBoolean.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JwtTokenServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RefreshTokenServiceTest.RefreshTokenService_GenerateRefreshToken_ReturnNewToken.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RefreshTokenServiceTest.RefreshTokenService_RefreshToken_ReturnNewToken.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RefreshTokenServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerTest.UserController_RegisterUser_ReturnToken.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.UserRepository_FindByName_ReturnUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.UserServiceTest.UserService_ExistByUsername_UserExists.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.UserService_FindByName_UserDoesNotExist.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.UserService_FindByName_UserExists.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.UserService_UserRegister_ReturnToken.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data/src/main/java/multisensory/project&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.reader.mode&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="multisensory.project.repository" />
