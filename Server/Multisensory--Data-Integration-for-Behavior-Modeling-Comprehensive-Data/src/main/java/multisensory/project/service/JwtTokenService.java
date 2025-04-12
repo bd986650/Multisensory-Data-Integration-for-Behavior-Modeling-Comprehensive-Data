@@ -24,7 +24,6 @@ public class JwtTokenService {
     private SecretKey secretKeyAccess; // ключ для подписи access токена
     private SecretKey secretKeyRefresh; // ключ для подписи refresh токена
     private final long EXPIRATION_TIME_ACCESS = 900000; // Время жизни токена (15 минут)
-    private final long EXPIRATION_TIME_REFRESH = 2629744000L; // Время жизни рефреш токена (1 мес)
 
 
     @PostConstruct
@@ -38,13 +37,13 @@ public class JwtTokenService {
     // Генерация токена с UUID userId
     public String generateToken(UUID userId) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("userId", userId.toString());  // Преобразуем UUID в строку для добавления в payload
+        claims.put("userId", userId.toString());
 
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME_ACCESS))
-                .signWith(secretKeyAccess)  // Используем постоянный секретный ключ
+                .signWith(secretKeyAccess)
                 .compact();
     }
 
@@ -56,7 +55,7 @@ public class JwtTokenService {
             throw new RuntimeException(e);
         }
         byte[] hash = digest.digest(token.getBytes());
-        return Base64.getEncoder().encodeToString(hash);  // Сохраняем хеш в Base64 для удобства
+        return Base64.getEncoder().encodeToString(hash);
     }
 
     // Получение userId из токена
@@ -71,13 +70,6 @@ public class JwtTokenService {
     public Date extractExpirationTime(String token, String type) {
         Claims claims = getClaimsFromToken(token, type.equals("refresh") ? secretKeyRefresh : secretKeyAccess);
         return claims.getExpiration();
-    }
-
-    // Проверка срока действия токена
-    public boolean isTokenExpired(String token) {
-        String tokenWithoutBearer = token.substring(7); // Убираем "Bearer " из токена
-        Date expiration = getClaimsFromToken(tokenWithoutBearer, secretKeyAccess).getExpiration();
-        return expiration.before(new Date());
     }
 
     // Получение всех claims (данных) из токена
