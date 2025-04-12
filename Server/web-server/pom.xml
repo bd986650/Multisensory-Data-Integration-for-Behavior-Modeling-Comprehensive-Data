@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>multisensory.project</groupId>
-    <artifactId>Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data</artifactId>
+    <artifactId>web-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
