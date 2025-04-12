@@ -9,7 +9,6 @@ import multisensory.project.repository.UserRepository;
 import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.stereotype.Service;
 
-import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.UUID;
@@ -17,9 +16,9 @@ import java.util.UUID;
 @Service
 public class UserService {
 
-    UserRepository userRepository;
-    RefreshTokenService refreshTokenService;
-    JwtTokenService jwtTokenService;
+    private final UserRepository userRepository;
+    private final RefreshTokenService refreshTokenService;
+    private final JwtTokenService jwtTokenService;
 
     public UserService(UserRepository userRepository,
                        RefreshTokenService refreshTokenService,
@@ -41,7 +40,6 @@ public class UserService {
 
         UUID userId = generateUUID();
 
-        // Сохранение данных пользователя (user_id, username, password) в таблицу
         saveUser(new User(userId, name, hashPassword));
 
         return jwtTokenService.generateToken(userId);

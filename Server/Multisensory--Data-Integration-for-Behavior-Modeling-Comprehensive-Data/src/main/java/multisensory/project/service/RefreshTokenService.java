@@ -5,25 +5,30 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
-import jakarta.persistence.EntityNotFoundException;
 import multisensory.project.model.RefreshToken;
 import multisensory.project.repository.RefreshTokenRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 @Service
 public class RefreshTokenService {
-    RefreshTokenRepository refreshTokenRepository;
-    JwtTokenService jwtTokenService;
+    private final RefreshTokenRepository refreshTokenRepository;
+    private final JwtTokenService jwtTokenService;
 
     @Value("${refresh.jwt.secret}")
     private String refreshSecretKeyString;
     private SecretKey secretKeyRefresh; // ключ для подписи refresh токена
     private final long EXPIRATION_TIME_REFRESH = 2629744000L; // Время жизни рефреш токена (1 мес)
+
+    public RefreshTokenService(RefreshTokenRepository refreshTokenRepository,
+                               JwtTokenService jwtTokenService) {
+        this.refreshTokenRepository = refreshTokenRepository;
+        this.jwtTokenService = jwtTokenService;
+    }
 
     @PostConstruct
     public void init() {
@@ -31,13 +36,8 @@ public class RefreshTokenService {
         secretKeyRefresh = Keys.hmacShaKeyFor(keyBytesRefresh);
     }
 
-    public RefreshTokenService(RefreshTokenRepository refreshTokenRepository, JwtTokenService jwtTokenService) {
-        this.refreshTokenRepository = refreshTokenRepository;
-        this.jwtTokenService = jwtTokenService;
-    }
-
     public RefreshToken getRefreshTokenByUserId(UUID userId) {
-        return refreshTokenRepository.findByUserId(userId).orElseThrow(() -> new NoSuchElementException("Refresh token is not found"));
+        return refreshTokenRepository.findById(userId).orElseThrow(() -> new NoSuchElementException("Refresh token is not found"));
     }
 
     private void deleteRefreshToken(UUID userId) {
@@ -47,9 +47,8 @@ public class RefreshTokenService {
     public String refreshToken(String refreshToken) {
         UUID userId = jwtTokenService.extractUserId(refreshToken, "refresh");
         RefreshToken refreshTokenData = getRefreshTokenByUserId(userId);
-        String hashedRefreshToken;
         String refreshWithOutBearer = refreshToken.substring(7);
-        hashedRefreshToken = jwtTokenService.hashToken(refreshWithOutBearer);
+        String hashedRefreshToken = jwtTokenService.hashToken(refreshWithOutBearer);
 
         if (refreshTokenData.getRefreshToken().equals(hashedRefreshToken)) {
             if (!refreshTokenData.getExpirationTime().before(new Date())) {
@@ -73,7 +72,7 @@ public class RefreshTokenService {
     }
 
     public void saveRefreshToken(RefreshToken refreshToken) {
-        Optional<RefreshToken> refreshExists = refreshTokenRepository.findByUserId(refreshToken.getUserId());
+        Optional<RefreshToken> refreshExists = refreshTokenRepository.findById(refreshToken.getUserId());
         if (refreshExists.isPresent()) {
             deleteRefreshToken(refreshToken.getUserId());
         }
