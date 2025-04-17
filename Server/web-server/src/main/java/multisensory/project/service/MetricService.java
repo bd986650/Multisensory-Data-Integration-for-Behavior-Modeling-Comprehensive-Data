@@ -1,6 +1,7 @@
 package multisensory.project.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import multisensory.project.model.MetricData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class MetricService {
 
     @Value("${influx.url}")
@@ -30,12 +32,7 @@ public class MetricService {
     private final JwtTokenService jwtTokenService;
     private final WebClient webClient;
 
-    public MetricService(JwtTokenService jwtTokenService, WebClient webClient) {
-        this.jwtTokenService = jwtTokenService;
-        this.webClient = webClient;
-    }
-
-    public String saveUserMetric(String token, String type,
+    public void saveUserMetric(String token, String type,
                                  String value, long timestamp) {
 
         UUID userId = jwtTokenService.extractUserId(token, "access");
@@ -70,7 +67,6 @@ public class MetricService {
                     .retrieve()
                     .bodyToMono(String.class)
                     .block();
-            return result;
         } catch (WebClientResponseException ex) {
             ex.printStackTrace();
             throw new RuntimeException("Error with saving metric");

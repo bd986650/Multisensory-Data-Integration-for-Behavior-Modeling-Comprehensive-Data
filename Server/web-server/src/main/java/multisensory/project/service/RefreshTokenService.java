@@ -5,6 +5,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import multisensory.project.model.RefreshToken;
 import multisensory.project.repository.RefreshTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import javax.crypto.SecretKey;
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class RefreshTokenService {
     private final RefreshTokenRepository refreshTokenRepository;
     private final JwtTokenService jwtTokenService;
@@ -24,12 +26,6 @@ public class RefreshTokenService {
     private SecretKey secretKeyRefresh; // ключ для подписи refresh токена
     private final long EXPIRATION_TIME_REFRESH = 2629744000L; // Время жизни рефреш токена (1 мес)
 
-    public RefreshTokenService(RefreshTokenRepository refreshTokenRepository,
-                               JwtTokenService jwtTokenService) {
-        this.refreshTokenRepository = refreshTokenRepository;
-        this.jwtTokenService = jwtTokenService;
-    }
-
     @PostConstruct
     public void init() {
         byte[] keyBytesRefresh = Base64.getDecoder().decode(refreshSecretKeyString);
@@ -38,10 +34,6 @@ public class RefreshTokenService {
 
     public RefreshToken getRefreshTokenByUserId(UUID userId) {
         return refreshTokenRepository.findById(userId).orElseThrow(() -> new NoSuchElementException("Refresh token is not found"));
-    }
-
-    private void deleteRefreshToken(UUID userId) {
-        refreshTokenRepository.deleteById(userId);
     }
 
     public String refreshToken(String refreshToken) {
@@ -72,10 +64,6 @@ public class RefreshTokenService {
     }
 
     public void saveRefreshToken(RefreshToken refreshToken) {
-        Optional<RefreshToken> refreshExists = refreshTokenRepository.findById(refreshToken.getUserId());
-        if (refreshExists.isPresent()) {
-            deleteRefreshToken(refreshToken.getUserId());
-        }
         refreshTokenRepository.save(refreshToken);
     }
 }
