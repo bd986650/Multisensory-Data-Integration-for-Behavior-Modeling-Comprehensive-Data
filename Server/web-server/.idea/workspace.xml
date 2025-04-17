@@ -4,30 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/MetricService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/MetricService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/multisensory/project/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/controller/UserControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/multisensory/project/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.controller.UserControllerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.controller.UserControllerTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.repository.UserRepositoryTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.repository.UserRepositoryTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.JwtTokenServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.JwtTokenServiceTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.RefreshTokenServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.RefreshTokenServiceTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.UserServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.UserServiceTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.controller.UserControllerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.controller.UserControllerTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.repository.UserRepositoryTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.repository.UserRepositoryTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.JwtTokenServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.JwtTokenServiceTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.RefreshTokenServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.RefreshTokenServiceTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.UserServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.UserServiceTest.txt" afterDir="false" />
+    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="updates">
+      <change beforePath="$PROJECT_DIR$/target/classes/multisensory/project/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/multisensory/project/service/MetricService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/multisensory/project/service/MetricService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/multisensory/project/service/RefreshTokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/multisensory/project/service/RefreshTokenService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/multisensory/project/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/multisensory/project/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/multisensory/project/controller/UserControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/multisensory/project/controller/UserControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/multisensory/project/service/JwtTokenServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/multisensory/project/service/JwtTokenServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/multisensory/project/service/UserServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/multisensory/project/service/UserServiceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,6 +192,15 @@
       <option name="presentableId" value="Default" />
       <updated>1729001148335</updated>
     </task>
+    <task id="LOCAL-00001" summary="updates">
+      <option name="closed" value="true" />
+      <created>1744879179470</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1744879179470</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -221,6 +217,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="small changes" />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
