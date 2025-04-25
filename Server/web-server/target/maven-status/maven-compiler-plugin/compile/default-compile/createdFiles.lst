@@ -2,6 +2,7 @@ multisensory/project/service/AuthService.class
 multisensory/project/model/User.class
 multisensory/project/service/RefreshTokenService.class
 multisensory/project/config/WebConfig.class
+multisensory/project/aspect/LoggingAspect.class
 multisensory/project/model/AuthTokensDto.class
 multisensory/project/MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.class
 multisensory/project/controller/AuthController.class

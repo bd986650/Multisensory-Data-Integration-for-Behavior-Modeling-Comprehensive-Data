@@ -1,4 +1,5 @@
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.java
+/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/aspect/LoggingAspect.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/config/AppConfig.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/config/WebConfig.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/controller/AuthController.java
