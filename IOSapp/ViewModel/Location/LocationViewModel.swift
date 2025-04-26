@@ -67,34 +67,54 @@ final class LocationViewModel: NSObject, CLLocationManagerDelegate, ObservableOb
             center: location.coordinate,
             span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         )
-        reverseGeocode(location)
+        requestReverseGeocoding(location: location)
         checkAndStoreLocation(location)
     }
 
-    private func reverseGeocode(_ location: CLLocation) {
-        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
-            guard let self = self else { return }
+    var lastGeocodeRequestTime: Date?
+
+    func requestReverseGeocoding(location: CLLocation) {
+        let now = Date()
+        
+        // Проверяем, когда был последний запрос
+        if let lastRequest = lastGeocodeRequestTime, now.timeIntervalSince(lastRequest) < 1.2 {
+            print("⏳ Пропускаем геокодирование, чтобы избежать лимитов")
+            return
+        }
+        
+        lastGeocodeRequestTime = now
+        
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let error = error {
+                print("Ошибка геокодирования: \(error.localizedDescription)")
+                return
+            }
+
             if let placemark = placemarks?.first {
-                self.locationName = [placemark.name, placemark.locality, placemark.administrativeArea, placemark.country]
-                    .compactMap { $0 }
-                    .joined(separator: ", ")
-            } else {
-                self.locationName = "Unknown Location"
-                print("Ошибка обратного геокодирования: \(error?.localizedDescription ?? "Unknown error")")
+                print("Местоположение: \(placemark.locality ?? "Неизвестно")")
             }
         }
     }
 
     private func checkAndStoreLocation(_ newLocation: CLLocation) {
+        // Если список пустой — добавляем сразу
         guard let lastLocation = savedLocations.last else {
             savedLocations.append(newLocation.coordinate)
             sendLocationToServer(newLocation.coordinate)
             return
         }
-
-        let distance = newLocation.distance(from: CLLocation(latitude: lastLocation.latitude, longitude: lastLocation.longitude))
-
-        if distance > 100 {
+        
+        // Создаем CLLocation из последней сохраненной координаты
+        let lastCLLocation = CLLocation(latitude: lastLocation.latitude, longitude: lastLocation.longitude)
+        
+        // Вычисляем расстояние
+        let distance = newLocation.distance(from: lastCLLocation)
+        
+//        print("📏 Расстояние до последней точки: \(distance) м")
+        
+        // Отправляем на сервер только если расстояние > 100 
+        if distance > 1 {
             savedLocations.append(newLocation.coordinate)
             sendLocationToServer(newLocation.coordinate)
         }
@@ -106,31 +126,8 @@ final class LocationViewModel: NSObject, CLLocationManagerDelegate, ObservableOb
             print("Ошибка: Токен отсутствует")
             return
         }
-
-//        let locationData: [String: Any] = [
-//            "value": "\(coordinate.latitude):\(coordinate.longitude)",
-//            "type": "coordinates",
-//            "timestamp": Int(Date().timeIntervalSince1970) // Время в секундах с 1970
-//        ]
-//
-//        guard let jsonData = try? JSONSerialization.data(withJSONObject: locationData) else {
-//            print("Ошибка сериализации JSON")
-//            return
-//        }
-
-//        guard let url = URL(string: "\(Constants.baseURL)/api/users/save") else {
-//            print("Ошибка: Неверный URL")
-//            return
-//        }
-//
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.httpBody = jsonData
         
-        let urlString = "\(Constants.baseURL)/api/users/save?type=coordinates&value=\(coordinate.latitude):\(coordinate.longitude)&timestamp=\(Int(Date().timeIntervalSince1970))"
-        guard let url = URL(string: urlString) else {
+        guard let url = URL(string: "\(Constants.baseURL)/api/users/save") else {
             print("Ошибка: Неверный URL")
             return
         }
@@ -140,6 +137,21 @@ final class LocationViewModel: NSObject, CLLocationManagerDelegate, ObservableOb
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
+        let timestamp = Int(Date().timeIntervalSince1970)
+        let value = "\(coordinate.latitude):\(coordinate.longitude)"
+        
+        let body: [String: Any] = [
+            "type": "coordinates",
+            "value": value,
+            "timestamp": timestamp
+        ]
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: body)
+        } catch {
+            print("Ошибка сериализации JSON: \(error.localizedDescription)")
+            return
+        }
 
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             DispatchQueue.main.async {
@@ -171,8 +183,6 @@ final class LocationViewModel: NSObject, CLLocationManagerDelegate, ObservableOb
         }.resume()
     }
 
-
-    // 🚀 Функция обновления токена
     private func refreshToken(completion: @escaping (Bool) -> Void) {
         guard let refreshToken = UserDefaults.standard.string(forKey: "refreshToken") else {
             print("Ошибка: Refresh Token отсутствует")
@@ -191,6 +201,7 @@ final class LocationViewModel: NSObject, CLLocationManagerDelegate, ObservableOb
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let refreshData: [String: Any] = ["refreshToken": refreshToken]
+
         request.httpBody = try? JSONSerialization.data(withJSONObject: refreshData)
 
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -201,25 +212,29 @@ final class LocationViewModel: NSObject, CLLocationManagerDelegate, ObservableOb
                     return
                 }
 
-                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let data = data {
-                    do {
-                        if let json = try JSONSerialization.jsonObject(with: data) as? [String: String],
-                           let newToken = json["jwtToken"],
-                           let newRefreshToken = json["refreshToken"] {
-                            UserDefaults.standard.set(newToken, forKey: "jwtToken")
-                            UserDefaults.standard.set(newRefreshToken, forKey: "refreshToken")
-                            print("✅ Токен успешно обновлен")
-                            completion(true)
-                        } else {
-                            print("Ошибка парсинга ответа сервера")
-                            completion(false)
-                        }
-                    } catch {
-                        print("Ошибка обработки JSON: \(error.localizedDescription)")
+                if let httpResponse = response as? HTTPURLResponse {
+                    // Логируем статус ответа от сервера
+                    print("Ответ от сервера: \(httpResponse.statusCode)")
+                }
+
+                // Логируем тело ответа
+                if let data = data {
+                    let responseBody = String(data: data, encoding: .utf8) ?? "Ошибка преобразования в строку"
+                    print("Полученные данные: \(responseBody)")
+                    
+                    // Теперь предполагаем, что ответ - это новый JWT токен
+                    let newToken = responseBody
+                    if !newToken.isEmpty {
+                        // Сохраняем новый токен
+                        UserDefaults.standard.set(newToken, forKey: "jwtToken")
+                        print("✅ Токен успешно обновлен: \(newToken)")
+                        completion(true)
+                    } else {
+                        print("Ошибка: Новый токен пустой")
                         completion(false)
                     }
                 } else {
-                    print("Ошибка обновления токена: Сервер вернул некорректный ответ")
+                    print("Ошибка: Нет данных в ответе от сервера")
                     completion(false)
                 }
             }

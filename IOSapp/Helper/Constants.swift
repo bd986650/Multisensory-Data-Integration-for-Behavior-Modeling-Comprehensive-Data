@@ -7,5 +7,5 @@
 
 
 struct Constants {
-    static let baseURL = "http://10.9.51.248:8080"
+    static let baseURL = "http://51.250.108.190:8080"
 }

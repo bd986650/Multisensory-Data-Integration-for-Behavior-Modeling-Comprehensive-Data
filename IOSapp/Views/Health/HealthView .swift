@@ -34,7 +34,7 @@ struct HealthView: View {
             }
 
             Button {
-                healthVM.fetchNewStepData() // ❗️ Используем правильную функцию
+                healthVM.fetchNewStepData()
             } label: {
                 Text("Get health data")
             }

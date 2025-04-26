@@ -94,7 +94,7 @@ class RegisterViewModel: ObservableObject {
             }
         }.resume()
     }
-
+    
     struct RegistrationResponse: Codable {
         let jwt: String
     }

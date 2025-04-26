@@ -14,22 +14,21 @@ struct MutlisensoryDataIntegrationApp: App {
     
     var body: some Scene {
         WindowGroup {
-            // Если пользователь зарегистрирован, проверяем, вошел ли он
             if isRegistred {
                 if isLogined {
-                    // Если пользователь залогинен, показываем ContentView
                     ContentView()
                 } else {
-                    // Если не залогинен, показываем LoginView
                     LoginView(userIsRegistred: $isRegistred, isLogined: $isLogined)
+                        .ignoresSafeArea(.keyboard)
                 }
             } else {
-                // Если пользователь не зарегистрирован, показываем RegisterView
                 RegisterView(userIsRegistred: $isRegistred, isLogined: $isLogined)
+                    .ignoresSafeArea(.keyboard)
             }
         }
     }
 }
+
 
 
 

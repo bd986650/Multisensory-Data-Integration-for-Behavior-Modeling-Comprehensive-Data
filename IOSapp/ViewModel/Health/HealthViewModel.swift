@@ -4,13 +4,16 @@ import SwiftUI
 
 class HealthViewModel: ObservableObject {
     private var healthStore = HKHealthStore()
-
-    @Published var healthDataHistory: [HealthDataModel] = []
+    
     @AppStorage("jwtToken") var jwtToken: String = ""
     @AppStorage("refreshToken") var refreshToken: String = ""
 
     private var anchor: HKQueryAnchor?
 
+    // Обязательно добавьте @Published
+    @Published var healthDataHistory: [HealthDataModel] = []
+
+    // Функция для запроса авторизации
     func requestAuthorization() {
         let typesToRead: Set<HKObjectType> = [
             HKQuantityType.quantityType(forIdentifier: .stepCount)!
@@ -26,6 +29,7 @@ class HealthViewModel: ObservableObject {
         }
     }
 
+    // Функция для начала наблюдения за шагами
     func startObservingSteps() {
         let query = HKObserverQuery(sampleType: HKQuantityType.quantityType(forIdentifier: .stepCount)!, predicate: nil) { _, _, error in
             if let error = error {
@@ -43,6 +47,7 @@ class HealthViewModel: ObservableObject {
         }
     }
 
+    // Функция для получения новых данных шагов
     func fetchNewStepData() {
         let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         let query = HKAnchoredObjectQuery(type: stepType, predicate: nil, anchor: anchor, limit: HKObjectQueryNoLimit) { query, samples, _, newAnchor, error in
@@ -64,39 +69,48 @@ class HealthViewModel: ObservableObject {
                 )
             }
 
+            // Обновление history
             DispatchQueue.main.async {
                 self.healthDataHistory.append(contentsOf: newEntries)
-                self.saveHealthDataToUserDefaults()
-                self.sendStepsToServer(steps: newEntries)
             }
+
+            // Отправка шагов на сервер
+            self.sendStepsToServer(steps: newEntries)
         }
 
         healthStore.execute(query)
     }
 
+    // Новая отправка шагов на сервер
     func sendStepsToServer(steps: [HealthDataModel]) {
         guard let token = UserDefaults.standard.string(forKey: "jwtToken") else {
             print("Ошибка: Токен отсутствует")
             return
         }
-
-        // Для каждого шага создаём строку в формате timestamp:steps_count
-        let stepsValue = steps.map { step in
-            return "\(Int(step.timestamp.timeIntervalSince1970)):\(step.data["Steps"] ?? 0)"
-        }.joined(separator: ",")
-
-        // Формируем URL строку с шагами
-        let urlString = "\(Constants.baseURL)/api/users/save?type=steps&value=\(stepsValue)&timestamp=\(Int(Date().timeIntervalSince1970))"
         
-        guard let url = URL(string: urlString) else {
-            print("Ошибка: Неверный URL")
+        // Считаем общее количество шагов
+        let totalSteps = steps.reduce(0) { $0 + ($1.data["Steps"] ?? 0) }
+        
+        // Берем максимальный timestamp среди новых шагов
+        let maxTimestamp = steps.map { $0.timestamp.timeIntervalSince1970 }.max() ?? Date().timeIntervalSince1970
+        
+        let requestBody: [String: Any] = [
+            "type": "steps",
+            "value": Int(totalSteps),
+            "timestamp": Int(maxTimestamp)
+        ]
+        
+        guard let url = URL(string: "\(Constants.baseURL)/api/users/save"),
+              let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+            print("Ошибка формирования запроса")
             return
         }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
 
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             DispatchQueue.main.async {
@@ -104,15 +118,15 @@ class HealthViewModel: ObservableObject {
                     print("Ошибка запроса: \(error.localizedDescription)")
                     return
                 }
-
+                
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
-                        print("Шаги успешно сохранены на сервере!")
+                        print("✅ Шаги успешно отправлены на сервер!")
                     } else if httpResponse.statusCode == 401 {
                         print("⚠️ Токен устарел, обновляем...")
                         self?.refreshJWTToken { success in
                             if success {
-                                self?.sendStepsToServer(steps: steps) // Повторная отправка
+                                self?.sendStepsToServer(steps: steps) // Повторная отправка всего пакета шагов
                             } else {
                                 print("⛔ Ошибка обновления токена")
                             }
@@ -172,11 +186,5 @@ class HealthViewModel: ObservableObject {
                 }
             }
         }.resume()
-    }
-
-    private func saveHealthDataToUserDefaults() {
-        if let encodedData = try? JSONEncoder().encode(healthDataHistory) {
-            UserDefaults.standard.set(encodedData, forKey: "healthDataHistory")
-        }
     }
 }
