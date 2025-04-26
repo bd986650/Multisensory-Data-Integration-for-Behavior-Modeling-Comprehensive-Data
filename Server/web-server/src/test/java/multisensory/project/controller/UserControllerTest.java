@@ -47,11 +47,11 @@ public class UserControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-        public void UserController_RegisterUser_ReturnToken() throws Exception {
+        public void AuthController_RegisterUser_ReturnToken() throws Exception {
         when(passwordEncoder.encode(Mockito.anyString())).thenReturn("Password");
         when(authService.userRegister(Mockito.anyString(), Mockito.anyString())).thenReturn("Token");
 
-        ResultActions response = mockMvc.perform(post("/api/user/register")
+        ResultActions response = mockMvc.perform(post("/api/auth/register")
                 .param("username", "testuser")
                 .param("password", "password")
                 .contentType(MediaType.APPLICATION_JSON));
@@ -60,7 +60,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void UserController_LoginUser_ReturnBothTokens() throws Exception {
+    public void AuthController_LoginUser_ReturnBothTokens() throws Exception {
         User user = new User(UUID.randomUUID(), "Alex", "passwd");
         AuthTokensDto tokens = new AuthTokensDto("access", "refresh");
 
@@ -68,7 +68,7 @@ public class UserControllerTest {
         when(authService.userLogin(Mockito.anyString(), Mockito.any(UUID.class))).thenReturn(tokens);
         when(passwordEncoder.matches(Mockito.anyString(), Mockito.anyString())).thenReturn(true);
 
-        ResultActions response = mockMvc.perform(post("/api/user/login")
+        ResultActions response = mockMvc.perform(post("/api/auth/login")
                 .param("username", "user")
                 .param("password", "password")
                 .contentType(MediaType.APPLICATION_JSON));
@@ -80,11 +80,11 @@ public class UserControllerTest {
     }
 
     @Test
-    public void UserController_RefreshToken_ReturnAccessToken() throws Exception {
+    public void AuthController_RefreshToken_ReturnAccessToken() throws Exception {
         when(refreshTokenService.refreshToken(Mockito.anyString()))
                 .thenReturn("Token");
 
-        ResultActions response = mockMvc.perform(post("/api/user/refresh")
+        ResultActions response = mockMvc.perform(post("/api/auth/refresh")
                 .header("Authorization", "refreshToken")
                 .contentType(MediaType.APPLICATION_JSON));
 
