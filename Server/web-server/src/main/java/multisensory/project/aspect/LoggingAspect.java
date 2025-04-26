@@ -15,22 +15,19 @@ public class LoggingAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-    // Указываем, что аспект будет работать для всех методов в сервисах
     @Pointcut("execution(* multisensory.project.service.*.*(..))")
     public void serviceMethods() {}
 
-    // Логирование до выполнения метода
     @Before("serviceMethods()")
     public void logBefore(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         logger.info("{} Method is about to execute", methodName);
     }
 
-    // Логирование после успешного выполнения метода
     @AfterReturning(value = "serviceMethods()")
     public void logAfterReturning(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         logger.info("{} Method executed successfully", methodName);
     }
-} 
+}
 

@@ -1,0 +1,24 @@
+package multisensory.project.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import com.influxdb.client.InfluxDBClient;
+import com.influxdb.client.InfluxDBClientFactory;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class InfluxDbConfig {
+    @Value("${influx.url}")
+    private String influxdbUrl;
+    @Value("${influx.authToken}")
+    private String authToken;
+    @Value("${influx.org}")
+    private String org;
+    @Value("${influx.bucket}")
+    private String bucket;
+
+    @Bean
+    public InfluxDBClient influxDBClient() {
+        return InfluxDBClientFactory.create(influxdbUrl, authToken.toCharArray(), org, bucket);
+    }
+}
