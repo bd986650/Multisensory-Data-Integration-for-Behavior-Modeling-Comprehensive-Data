@@ -54,17 +54,4 @@ public class UserServiceTest {
 
         Boolean userFound = userService.existsByUsername(user.getName());
     }
-
-    @Test
-    public void UserService_UserRegister_ReturnToken() {
-        when(userRepository.findByName(Mockito.any(String.class)))
-                .thenReturn(Optional.empty());
-        when(jwtTokenService.generateToken(Mockito.any(UUID.class)))
-                .thenReturn("Bearer 17eh1e1...");
-
-        Assertions.assertThat(userService.userRegister("Alex", "adw2f2@1*"))
-                .isNotNull();
-        Assertions.assertThat(userService.userRegister("Alex", "adw2f2@1*")
-                .length()).isGreaterThan(0);
-    }
 }

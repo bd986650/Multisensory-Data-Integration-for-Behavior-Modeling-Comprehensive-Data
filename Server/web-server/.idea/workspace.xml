@@ -4,28 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/config/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/MetricController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/MetricService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/controller/UserControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/repository/UserRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/JwtTokenServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/RefreshTokenServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/multisensory/project/service/UserServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/application-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/repository/RefreshTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/repository/RefreshTokenRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/JwtTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="updates">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,21 +61,23 @@
     &quot;JUnit.RefreshTokenServiceTest.RefreshTokenService_RefreshToken_ReturnNewToken.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.RefreshTokenServiceTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UserControllerTest.UserController_RegisterUser_ReturnToken.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UserRepositoryTest.UserRepository_FindByName_ReturnUser.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.UserServiceTest.UserService_ExistByUsername_UserExists.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UserServiceTest.UserService_FindByName_UserDoesNotExist.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UserServiceTest.UserService_FindByName_UserExists.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.UserServiceTest.UserService_UserRegister_ReturnToken.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;server&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data/src/main/java/multisensory/project&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.reader.mode&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -104,7 +86,7 @@
       <recent name="com.example.demo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RefreshTokenServiceTest">
+  <component name="RunManager" selected="JUnit.UserControllerTest">
     <configuration name="RefreshTokenServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data" />
       <extension name="coverage">
@@ -135,38 +117,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserControllerTest.AuthController_LoginUser_ReturnBothTokens" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="multisensory.project.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="multisensory.project.controller" />
-      <option name="MAIN_CLASS_NAME" value="multisensory.project.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="AuthController_LoginUser_ReturnBothTokens" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerTest.AuthController_RefreshToken_ReturnAccessToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="multisensory.project.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="multisensory.project.controller" />
-      <option name="MAIN_CLASS_NAME" value="multisensory.project.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="AuthController_RefreshToken_ReturnAccessToken" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserControllerTest.UserController_RegisterUser_ReturnToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data" />
       <extension name="coverage">
@@ -183,13 +133,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="multisensory.project.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="multisensory.project.service" />
+      <option name="MAIN_CLASS_NAME" value="multisensory.project.service.UserServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.UserService_FindByName_UserExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="multisensory.project.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="multisensory.project.service" />
+      <option name="MAIN_CLASS_NAME" value="multisensory.project.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="UserService_FindByName_UserExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserControllerTest" />
+        <item itemvalue="JUnit.UserServiceTest" />
+        <item itemvalue="JUnit.UserServiceTest.UserService_FindByName_UserExists" />
         <item itemvalue="JUnit.RefreshTokenServiceTest" />
         <item itemvalue="JUnit.UserControllerTest.UserController_RegisterUser_ReturnToken" />
-        <item itemvalue="JUnit.UserControllerTest" />
-        <item itemvalue="JUnit.UserControllerTest.AuthController_RefreshToken_ReturnAccessToken" />
-        <item itemvalue="JUnit.UserControllerTest.AuthController_LoginUser_ReturnBothTokens" />
       </list>
     </recent_temporary>
   </component>
@@ -202,6 +183,23 @@
       <option name="presentableId" value="Default" />
       <updated>1729001148335</updated>
     </task>
+    <task id="LOCAL-00001" summary="updates">
+      <option name="closed" value="true" />
+      <created>1744879179470</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1744879179470</updated>
+    </task>
+    <task id="LOCAL-00002" summary="updates">
+      <option name="closed" value="true" />
+      <created>1744880014196</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1744880014196</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -219,6 +217,11 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="small changes" />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -226,11 +229,6 @@
           <properties class="java.lang.IllegalStateException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/multisensory/project/service/RefreshTokenService.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

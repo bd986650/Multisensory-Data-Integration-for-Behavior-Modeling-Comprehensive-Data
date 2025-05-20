@@ -3,6 +3,7 @@ package multisensory.project.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import multisensory.project.model.AuthTokensDto;
 import multisensory.project.model.User;
+import multisensory.project.service.AuthService;
 import multisensory.project.service.JwtTokenService;
 import multisensory.project.service.RefreshTokenService;
 import multisensory.project.service.UserService;
@@ -25,7 +26,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(controllers = UserController.class)
+@WebMvcTest(controllers = AuthController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @ExtendWith(MockitoExtension.class)
 public class UserControllerTest {
@@ -40,15 +41,17 @@ public class UserControllerTest {
     private JwtTokenService jwtTokenService;
     @MockBean
     private RefreshTokenService refreshTokenService;
+    @MockBean
+    private AuthService authService;
     @Autowired
     private ObjectMapper objectMapper;
 
     @Test
-        public void UserController_RegisterUser_ReturnToken() throws Exception {
+        public void AuthController_RegisterUser_ReturnToken() throws Exception {
         when(passwordEncoder.encode(Mockito.anyString())).thenReturn("Password");
-        when(userService.userRegister(Mockito.anyString(), Mockito.anyString())).thenReturn("Token");
+        when(authService.userRegister(Mockito.anyString(), Mockito.anyString())).thenReturn("Token");
 
-        ResultActions response = mockMvc.perform(post("/api/user/register")
+        ResultActions response = mockMvc.perform(post("/api/auth/register")
                 .param("username", "testuser")
                 .param("password", "password")
                 .contentType(MediaType.APPLICATION_JSON));
@@ -57,15 +60,15 @@ public class UserControllerTest {
     }
 
     @Test
-    public void UserController_LoginUser_ReturnBothTokens() throws Exception {
+    public void AuthController_LoginUser_ReturnBothTokens() throws Exception {
         User user = new User(UUID.randomUUID(), "Alex", "passwd");
         AuthTokensDto tokens = new AuthTokensDto("access", "refresh");
 
         when(userService.findByName(Mockito.anyString())).thenReturn(user);
-        when(userService.userLogin(Mockito.anyString(), Mockito.any(UUID.class))).thenReturn(tokens);
+        when(authService.userLogin(Mockito.anyString(), Mockito.any(UUID.class))).thenReturn(tokens);
         when(passwordEncoder.matches(Mockito.anyString(), Mockito.anyString())).thenReturn(true);
 
-        ResultActions response = mockMvc.perform(post("/api/user/login")
+        ResultActions response = mockMvc.perform(post("/api/auth/login")
                 .param("username", "user")
                 .param("password", "password")
                 .contentType(MediaType.APPLICATION_JSON));
@@ -77,11 +80,11 @@ public class UserControllerTest {
     }
 
     @Test
-    public void UserController_RefreshToken_ReturnAccessToken() throws Exception {
+    public void AuthController_RefreshToken_ReturnAccessToken() throws Exception {
         when(refreshTokenService.refreshToken(Mockito.anyString()))
                 .thenReturn("Token");
 
-        ResultActions response = mockMvc.perform(post("/api/user/refresh")
+        ResultActions response = mockMvc.perform(post("/api/auth/refresh")
                 .header("Authorization", "refreshToken")
                 .contentType(MediaType.APPLICATION_JSON));
 

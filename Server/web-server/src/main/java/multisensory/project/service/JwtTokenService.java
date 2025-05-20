@@ -14,7 +14,6 @@ import java.util.*;
 @Service
 public class JwtTokenService {
 
-    // Загружаем секретную фразу из настроек (application.properties)
     @Value("${jwt.secret}")
     private String accessSecretKeyString;
 
@@ -81,11 +80,11 @@ public class JwtTokenService {
                     .parseClaimsJws(token)
                     .getBody();
         } catch (ExpiredJwtException e) {
-            throw new RuntimeException("JWT token is expired", e);  // Обработка ошибки истечения токена
+            throw new ExpiredJwtException(null, null, "JWT token is expired");  // Обработка ошибки истечения токена
         } catch (SignatureException e) {
-            throw new RuntimeException("JWT signature does not match", e);  // Обработка ошибки подписи
+            throw new RuntimeException("JWT signature does not match");  // Обработка ошибки подписи
         } catch (JwtException e) {
-            throw new RuntimeException("JWT token is invalid", e);  // Обработка других ошибок токена
+            throw new RuntimeException("JWT token is invalid");  // Обработка других ошибок токена
         }
     }
 
