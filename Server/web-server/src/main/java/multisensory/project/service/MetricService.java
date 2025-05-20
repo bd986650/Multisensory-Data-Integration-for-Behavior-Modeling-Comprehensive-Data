@@ -38,6 +38,8 @@ public class MetricService {
             case "steps":
             case "heartbeat":
             case "notification":
+            case "calories":
+            case "active_minutes":
             case "coordinates":
                 point.addField("value", value);
                 break;
