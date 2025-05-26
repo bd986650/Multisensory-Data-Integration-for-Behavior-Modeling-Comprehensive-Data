@@ -3,6 +3,7 @@ multisensory/project/model/User.class
 multisensory/project/service/RefreshTokenService.class
 multisensory/project/config/WebConfig.class
 multisensory/project/aspect/LoggingAspect.class
+multisensory/project/service/BehaviorService.class
 multisensory/project/config/InfluxDbConfig.class
 multisensory/project/model/AuthTokensDto.class
 multisensory/project/MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.class
@@ -11,6 +12,7 @@ multisensory/project/service/MetricService.class
 multisensory/project/model/RefreshToken.class
 multisensory/project/repository/RefreshTokenRepository.class
 multisensory/project/config/AppConfig.class
+multisensory/project/controller/BehaviorController.class
 multisensory/project/service/UserService.class
 multisensory/project/model/MetricResponseDto.class
 multisensory/project/repository/UserRepository.class
