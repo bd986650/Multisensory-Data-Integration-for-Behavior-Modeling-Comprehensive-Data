@@ -1,5 +1,8 @@
 HELP.md
 target/
+*.class
+*.log
+*.xml
 
 ### STS ###
 .apt_generated

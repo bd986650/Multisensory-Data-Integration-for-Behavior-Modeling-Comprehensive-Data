@@ -1,24 +1,73 @@
+/* src/Components/EntryForm/InformationBlock/InformationBlock.module.css */
+
 .container {
-  margin: 10px 15px;
-  width: 100%;
-}
-
-.dataContainer {
-  height: min-content;
-  border: 3px solid rgba(115, 0, 255);
-  border-radius: 7px;
-  padding: 5px;
-  margin-bottom: 15px;
-
-  display: flex;
-  flex-wrap: wrap;
-  
+  padding: 20px;
+  background: #f5f5f5;
+  border: 1px solid #bdbdbd;
+  border-radius: 15px;
+  box-shadow: none;
 }
 
 .headerDataContainer {
-  font-size: 18px;
-  margin: 0px 4px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
+.cardsWrapper {
   display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.card {
+  flex: 1 1 100px;
+  background: #fff;
+  border: 1px solid #bdbdbd;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 15px;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  max-width: 300px;
+  overflow: hidden;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.cardValue {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  white-space: normal;
+  word-break: break-word;
+}
+
+
+/* Адаптивность: уменьшение размера карточек для мобильных устройств */
+@media (max-width: 768px) {
+  .cardsWrapper {
+    gap: 10px;
+  }
+
+  .card {
+    flex: 1 1 45%; /* Карточки занимают 45% ширины экрана */
+  }
+}
+
+@media (max-width: 480px) {
+  .cardsWrapper {
+    gap: 5px;
+  }
+
+  .card {
+    flex: 1 1 100%; /* Карточки занимают 100% ширины экрана на маленьких устройствах */
+  }
 }

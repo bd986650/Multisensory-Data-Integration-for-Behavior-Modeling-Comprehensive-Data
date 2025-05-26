@@ -1,3 +1,8 @@
 .container {
-  margin: 10px;
+  width: calc(100% - 40px);
+  height: 550px;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: #e8e8e8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

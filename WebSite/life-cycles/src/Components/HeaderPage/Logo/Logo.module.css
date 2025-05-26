@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   margin-left: 8px;
+  filter: grayscale(100%);
 }
 
 .logoImage {

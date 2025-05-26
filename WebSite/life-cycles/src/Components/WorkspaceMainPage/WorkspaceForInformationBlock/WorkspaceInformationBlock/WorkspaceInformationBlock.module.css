@@ -3,8 +3,10 @@
   height: 800px;
 
   display: flex;
-  border-radius: 30px;
-  margin: 10px;
 
-  background-color: rgba(192, 158, 224, 0.773);
+  margin: 10px;
+  border-radius: 15px;
+  padding: 0;
+  background-color: #f5f5f5;
+  border: 1px solid #bdbdbd;
 }

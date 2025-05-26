@@ -5,14 +5,16 @@ import styles from './Header.module.css'
 
 export function Header() {
   return(
-    <div className={styles.header}>
-      <div className={styles.leftPartHeader}>
-        <Logo/>
-        <ButtonMenu text={'меню'}/>
-        <ButtonMenu text={'меню'}/>
-      </div>
-      <div className={styles.rightPartHeader}>
-        <Profile/>
+    <div className={styles.headerOuter}>
+      <div className={styles.headerInner}>
+        <div className={styles.leftPartHeader}>
+          <Logo/>
+          {/* <ButtonMenu text={'меню'}/>
+          <ButtonMenu text={'меню'}/> */}
+        </div>
+        <div className={styles.rightPartHeader}>
+          <Profile/>
+        </div>
       </div>
     </div>
   );

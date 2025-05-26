@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:ignore="ExtraText">
+
+    <Button
+        android:id="@+id/btn_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Просмотр уведомлений"/>
+
+    <Button
+        android:id="@+id/btn_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Шаги"/>
+
+    <Button
+        android:id="@+id/btn_show_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Показать карту" />
+
+    <Button
+        android:id="@+id/btn_heart_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пульс" />
+
+    <Button
+        android:id="@+id/btn_active_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Активные минуты" />
+
+    <Button
+        android:id="@+id/btn_calories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сожженные калории" />
+</LinearLayout>

@@ -1,0 +1,47 @@
+.container {
+  background: #fff;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.date {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.status {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1890ff;
+  padding: 10px;
+  background-color: #f0f7ff;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.details {
+  font-size: 1rem;
+  color: #666;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.details > div {
+  margin-bottom: 5px;
+}
+
+.details > div:last-child {
+  margin-bottom: 0;
+} 

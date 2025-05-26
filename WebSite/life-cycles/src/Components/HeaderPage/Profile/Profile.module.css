@@ -2,19 +2,26 @@
   position: relative;
 
   height: 45px;
-  width: 45px;
-  border-radius: 50%;
+  /* width: 45px; */ /* Ширина будет определяться содержимым */
 
-  background-color: rgba(114, 29, 217, 0.477);
+  background-color: #f5f5f5;
 
   cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #bdbdbd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
 }
 
-.accountImage {
-  height: 45px;
-  width: 45px;
+.logoutText {
+  font-size: 1rem;
+  color: #222;
+  font-weight: bold;
 }
 
-.profile:hover {
-  background-color: rgba(115, 0, 255, 0.55);
-}
+/* Удаляю стили для иконки, так как она больше не используется */
+/* .accountImage { }
+.profile:hover { }
+*/

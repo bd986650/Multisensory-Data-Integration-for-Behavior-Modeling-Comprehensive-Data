@@ -1,0 +1,73 @@
+.container {
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+  background: #f5f5f5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.realTime {
+  padding-top: 20px;
+  font-size: 18px;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.year {
+  position: relative;
+  font-size: 12px;
+  z-index: 1;
+  margin-bottom: 20px; /* Увеличим отступ снизу для текста */
+  color: #222;
+}
+
+.year::before {
+  content: "";
+  position: absolute;
+  bottom: -10px; /* Засечка будет ниже текста */
+  left: 50%;
+  width: 3px;
+  height: 6px;
+  background: black;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.slider {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.track {
+  background: #bdbdbd;
+  height: 8px;
+  border-radius: 10px;
+}
+
+.thumb {
+  background: #222;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* Делаем ползунок круглым */
+  border: 2px solid #fff;
+  margin-top: -6px; /* Поднимаем ползунок для центрирования */
+}
+
+.selectedTime {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 40px;
+  color: #222;
+}
+
+.data {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #222;
+}
