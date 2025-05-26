@@ -11,7 +11,7 @@ The iOS and Android mobile applications collect data from phones and another dev
 
 ## Project Structure
 
-### Actigraph
+### Actigraph (Not Ready)
 This module contains the implementation of a BLE GATT server for Actigraph devices. It provides functionality for:
 - Bluetooth Low Energy communication
 - Data collection from Actigraph devices
