@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e80b2496-5f8f-4e36-a937-97efe7ea7319" name="Changes" comment="updates">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/controller/BehaviorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/service/BehaviorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/multisensory/project/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/multisensory/project/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/multisensory/project/config/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/multisensory/project/config/AppConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/server-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/server-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/server-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/server-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.controller.UserControllerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.controller.UserControllerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.repository.UserRepositoryTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.repository.UserRepositoryTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.JwtTokenServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.JwtTokenServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.RefreshTokenServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.RefreshTokenServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.UserServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-multisensory.project.service.UserServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.controller.UserControllerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.controller.UserControllerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.repository.UserRepositoryTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.repository.UserRepositoryTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.JwtTokenServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.JwtTokenServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.RefreshTokenServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.RefreshTokenServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.UserServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/multisensory.project.service.UserServiceTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,43 +63,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.multisensory.project.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AuthControllerTest.AuthController_LoginUser_ReturnBothTokens.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AuthControllerTest.AuthController_RefreshToken_ReturnAccessToken.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AuthControllerTest.AuthController_Register_ReturnToken.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AuthControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_ExtractExpirationTime_ReturnUUID.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_ExtractUserId_ReturnUUID.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_GenerateToken_ReturnToken.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_HashToken_ReturnHashedToken.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JwtTokenServiceTest.JwtTokenService_IsTokenExpired_ReturnBoolean.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JwtTokenServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RefreshTokenServiceTest.RefreshTokenService_GenerateRefreshToken_ReturnNewToken.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RefreshTokenServiceTest.RefreshTokenService_RefreshToken_ReturnNewToken.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RefreshTokenServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserControllerTest.UserController_RegisterUser_ReturnToken.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.UserRepository_FindByName_ReturnUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.UserServiceTest.UserService_ExistByUsername_UserExists.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.UserService_FindByName_UserDoesNotExist.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.UserService_FindByName_UserExists.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.UserService_UserRegister_ReturnToken.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;server&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data/src/main/java/multisensory/project&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor": "Run",
+    "Application.multisensory.project.MultisensoryDataIntegrationForBehaviorModelingComprehensiveDataApplication.executor": "Run",
+    "JUnit.AuthControllerTest.AuthController_LoginUser_ReturnBothTokens.executor": "Run",
+    "JUnit.AuthControllerTest.AuthController_RefreshToken_ReturnAccessToken.executor": "Run",
+    "JUnit.AuthControllerTest.AuthController_Register_ReturnToken.executor": "Run",
+    "JUnit.AuthControllerTest.executor": "Run",
+    "JUnit.JwtTokenServiceTest.JwtTokenService_ExtractExpirationTime_ReturnUUID.executor": "Run",
+    "JUnit.JwtTokenServiceTest.JwtTokenService_ExtractUserId_ReturnUUID.executor": "Run",
+    "JUnit.JwtTokenServiceTest.JwtTokenService_GenerateToken_ReturnToken.executor": "Run",
+    "JUnit.JwtTokenServiceTest.JwtTokenService_HashToken_ReturnHashedToken.executor": "Run",
+    "JUnit.JwtTokenServiceTest.JwtTokenService_IsTokenExpired_ReturnBoolean.executor": "Run",
+    "JUnit.JwtTokenServiceTest.executor": "Run",
+    "JUnit.RefreshTokenServiceTest.RefreshTokenService_GenerateRefreshToken_ReturnNewToken.executor": "Run",
+    "JUnit.RefreshTokenServiceTest.RefreshTokenService_RefreshToken_ReturnNewToken.executor": "Run",
+    "JUnit.RefreshTokenServiceTest.executor": "Run",
+    "JUnit.UserControllerTest.UserController_RegisterUser_ReturnToken.executor": "Run",
+    "JUnit.UserControllerTest.executor": "Run",
+    "JUnit.UserRepositoryTest.UserRepository_FindByName_ReturnUser.executor": "Run",
+    "JUnit.UserRepositoryTest.executor": "Debug",
+    "JUnit.UserServiceTest.UserService_ExistByUsername_UserExists.executor": "Run",
+    "JUnit.UserServiceTest.UserService_FindByName_UserDoesNotExist.executor": "Run",
+    "JUnit.UserServiceTest.UserService_FindByName_UserExists.executor": "Run",
+    "JUnit.UserServiceTest.UserService_UserRegister_ReturnToken.executor": "Run",
+    "JUnit.UserServiceTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "server",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data/src/main/java/multisensory/project",
+    "last_opened_file_path": "/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/Multisensory--Data-Integration-for-Behavior-Modeling-Comprehensive-Data",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="multisensory.project.repository" />

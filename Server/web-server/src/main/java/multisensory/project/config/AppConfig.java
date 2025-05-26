@@ -3,6 +3,7 @@ package multisensory.project.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.InfluxDBClientFactory;
@@ -13,6 +14,9 @@ public class AppConfig {
     public WebClient webClient(WebClient.Builder builder) {
         return builder.build();
     }
+
+    @Bean
+    public RestTemplate restTemplate() {return new RestTemplate();}
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

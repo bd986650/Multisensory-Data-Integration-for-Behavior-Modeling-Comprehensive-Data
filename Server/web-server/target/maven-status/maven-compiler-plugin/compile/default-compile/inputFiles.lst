@@ -4,6 +4,7 @@
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/config/InfluxDbConfig.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/config/WebConfig.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/controller/AuthController.java
+/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/controller/BehaviorController.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/controller/MetricController.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/exception/GlobalExceptionHandler.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/model/AuthTokensDto.java
@@ -14,6 +15,7 @@
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/repository/RefreshTokenRepository.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/repository/UserRepository.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/service/AuthService.java
+/Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/service/BehaviorService.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/service/JwtTokenService.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/service/MetricService.java
 /Users/miki/Desktop/gitProject/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/Server/web-server/src/main/java/multisensory/project/service/RefreshTokenService.java
