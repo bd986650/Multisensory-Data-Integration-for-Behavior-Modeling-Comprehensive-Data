@@ -71,8 +71,8 @@ Built with:
 [Setup Guide](https://github.com/bd986650/Multisensory-Data-Integration-for-Behavior-Modeling-Comprehensive-Data/blob/main/Website/README.md)
 
 ## Important 
-The server is located on a remote server and has already been deployed
-The website has already been deployed and located by domain https://multisensory-data-iota.vercel.app/
+- The server is located on a remote server and has already been deployed
+- The website has already been deployed and located by domain https://multisensory-data-iota.vercel.app/
 
 ## Authors
 - Belov Danil
